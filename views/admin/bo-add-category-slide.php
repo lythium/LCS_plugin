@@ -15,13 +15,13 @@ echo '<form action="options.php" method="post">';
 	echo '<div class="input-checkbox">';
 
 		foreach ($categories as $category) {
-			echo '<input type="checkbox" id="lcs_category_add" name="lcs_category_add[]" value="' . $category->cat_ID . '" class="clearclass' . esc_attr( ($xyz++%3) ) . '"' . checked() . '>
+			// ' . checked() . '
+			echo '<input type="checkbox" id="lcs_category_add" name="lcs_category_add[]" value="' . $category->cat_ID . '" class="clearclass' . esc_attr( ($xyz++%3) ) . '">
 						<span><strong>Catégorie : </strong>' . $category->name . '<strong> - ID : </strong>' . $category->cat_ID . '</span>';
 		}
 	echo '</div>';
 	submit_button();
 echo '</form>';
-print_r($options);
 var_dump($_POST);
   ?>
 <style media="screen">

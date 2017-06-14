@@ -1,6 +1,7 @@
 <?php
 // Remove the event with specified delete
 global $wpdb;
+var_dump($_POST);
 if (!empty($_POST['delete'])):
 	$delete_id = $_POST['delete'];
 	var_dump($delete_id);
@@ -38,8 +39,8 @@ echo '<div id="acf-field-group-wrap" class="wrap">';
 						$select_id = "cb-select-" . $id;
 						echo '<tr class="iedit level-0 type-page status-publish hentry">';
 							echo '<th scope="row" class="check-column">';
-								echo '<label class="screen-reader-text" for="cb-select-17">Sélectionner '. $key->Slider_Name .'</label>';
-								echo '<input id="'.$select_id.'" name="post[]" value="17" type="checkbox">';
+								echo '<label class="screen-reader-text" for="'.$select_id.'">Sélectionner '. $key->Slider_Name .'</label>';
+								echo '<input id="'.$select_id.'" name="post[]" value="'.$id.'" type="checkbox">';
 								echo '<div class="locked-indicator">';
 									echo '<span class="locked-indicator-icon" aria-hidden="true"></span>';
 									echo '<span class="screen-reader-text">\"'. $key->Slider_Name .'\" est verrouillé</span>';
@@ -52,12 +53,12 @@ echo '<div id="acf-field-group-wrap" class="wrap">';
 								echo '</div>';
 								echo '<strong><a class="row-title" href="">'. $key->Slider_Name .'</a></strong>';
 								echo '<div class="row-actions">';
-									echo '<span class="edit"><a href="">Modifier</a> | </span>';
-									echo '<span class="trash">';
-										echo '<form action="' . admin_url('admin.php?page=lcs') . '" method="post">';
+									echo '<span class="edit inline"><a href="">Modifier</a></span>';
+									echo '<span class="trash inline">';
+										echo '<form id="delete" action="' . admin_url('admin.php?page=lcs') . '" method="post">';
 											echo '<input type="hidden" name="delete" value="'.$id.'">';
 											// echo '<input type="submit" class="delete" value="Delete" />';
-											echo '<a type="submit" href="" class="submitdelete" value="Delete">Supprimer</a>';
+											echo '<a href="javascript:{}" onclick="document.getElementById(\'delete\').submit(); return false;">Supprimer</a>';
 										echo '</form>';
 									echo '</span>';
 								echo '</div>';
