@@ -2,7 +2,7 @@
 echo '<h1>'.get_admin_page_title().'</h1>';
 
 
-echo '<form action="options.php" method="post">';
+echo '<form action="' . admin_url('admin.php?page=lcs') . '" method="post">';
 	echo '<label for="lcs_name_add"> <strong> Nom du Slider </strong> </label> <input type="text" id="lcs_name_add" name="lcs_name_add" value=""><br>';
 	echo '<label for="lcs_category_add"> <strong> Choix des Categories </strong> </label>';
 
