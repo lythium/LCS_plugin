@@ -1,5 +1,5 @@
 <?php
-class Shortcode_Category
+class Shortcode_LCS
 {
 
 	function __construct()

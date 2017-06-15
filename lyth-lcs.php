@@ -15,9 +15,11 @@ class Lyth_CS_Plugin
     {
 		add_action('admin_menu', array($this, 'add_admin_menu'));
 		include_once plugin_dir_path( __FILE__ ).'class/class-add-lcs.php';
-		new Add_Category_Slide();
+		new Add_LCS();
 		include_once plugin_dir_path( __FILE__ ).'class/class-shortcode-lcs.php';
-        new Shortcode_Category();
+        new Shortcode_LCS();
+		include_once plugin_dir_path( __FILE__ ).'class/class-update-lcs.php';
+		new Update_LCS();
 		register_activation_hook(__FILE__, array('Add_Category_Slide', 'install'));
 		register_uninstall_hook(__FILE__, array('Add_Category_Slide', 'uninstall'));
     }

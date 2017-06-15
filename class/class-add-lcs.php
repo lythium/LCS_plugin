@@ -1,5 +1,5 @@
 <?php
-class Add_Category_Slide
+class Add_LCS
 {
     public function __construct()
     {
