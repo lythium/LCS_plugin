@@ -1,6 +1,6 @@
 <?php
-if (empty($_POST["select_id"]))
-	header('Location: '. admin_url("admin.php?page=lcs").')';
+if (empty($_POST["select_id"])):
+	header('Location: /wp-admin/admin.php?page=lcs');
 else :
 	$row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category");
 	if (!is_null($row)):

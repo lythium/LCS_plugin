@@ -2,7 +2,7 @@
 class Update_LCS
 {
 
-	function __construct(argument)
+	function __construct()
 	{
 		add_action('admin_menu', array($this, 'update_admin_menu'));
 	}
