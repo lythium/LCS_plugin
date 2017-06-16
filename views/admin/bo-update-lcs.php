@@ -13,7 +13,8 @@ else :
 		echo '<div id="nav-menus-frame" class="wp-clearfix">';
 			echo '<div id="menu-settings-column" class="metabox-holder">';
 				echo '<div class="clear"></div>';
-				echo '<form id="nav-menu-meta" class="nav-menu-meta" method="post" enctype="multipart/form-data">';
+
+				echo '<form id="category-update" class="nav-menu-meta" method="post" enctype="multipart/form-data">';
 					echo '<div id="side-sortables" class="accordion-container">';
 						echo '<ul class="outer-border">';
 							echo '<li class="control-section accordion-section select-category" id="select-category">';
@@ -53,6 +54,23 @@ else :
 						echo '</ul>';
 					echo '</div>';
 				echo '</form>';
+			echo '</div>';
+
+			echo '<div id="menu-management-liquid';
+				echo '<div id="menu-management';
+					echo '<form id="update-meta" method="post" enctype="multipart/form-data">';
+						echo '<div id="menu-edit">';
+
+							echo '<div id="nav-menu-header">';
+								echo '<div class="major-publishing-actions wp-clearfix">';
+									echo '<label class="menu-name-label" for="menu-name">Nom du Slide</label>';
+									echo '<input name="menu-name" id="menu-name" type="text" class="menu-name regular-text menu-item-textbox" value"">';
+								echo '</div>';
+							echo '</div>';
+
+						echo '</div>';
+					echo '</form>';
+				echo '</div>';
 			echo '</div>';
 		echo '</div>';
 	echo '</div>';
