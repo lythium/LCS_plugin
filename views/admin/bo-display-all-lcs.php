@@ -3,9 +3,9 @@
 global $wpdb;
 $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category");
 if (!is_null($row)):
-var_dump($_POST);
-	if (!empty($_POST['delete'])):
-		$delete_id = $_POST['delete'];
+var_dump($_GET);
+	if (!empty($_GET['delete'])):
+		$delete_id = $_GET['delete'];
 		var_dump($delete_id);
 		$wpdb->delete("{$wpdb->prefix}lcs_category", array("Slider_id" => $delete_id));
 	endif;
@@ -19,10 +19,6 @@ echo '<div id="acf-field-group-wrap" class="wrap">';
 		echo '<table class="wp-list-table widefat fixed striped pages">';
 			echo '<thead>';
 				echo '<tr>';
-					echo '<td id="cd" class="manage-column column check-column">';
-						echo '<label class="screen-reader-text" for="cb-select-all-1">Tout sélectionner</label>';
-						echo '<input id="cb-select-all-1" type="checkbox">';
-					echo '</td>';
 					echo '<th id="title" class="manage-column column-title column-primary sortable desc" scope="col" >';
 						echo '<a href="" >';
 							echo '<span>Name Slide</span>';
@@ -41,17 +37,11 @@ echo '<div id="acf-field-group-wrap" class="wrap">';
 				if ($results):
 					foreach ($results as $key ):
 						$id = $key->Slider_id;
+						$url_update =  "admin.php?page=update_lcs&select=".$id;
+						$url_delete = "admin.php?page=lcs&delete=".$id;
 						$categories_id = unserialize($key->Category_ID);
 						$select_id = "cb-select-" . $id;
 						echo '<tr class="iedit level-0 type-page status-publish hentry">';
-							echo '<th scope="row" class="check-column">';
-								echo '<label class="screen-reader-text" for="'.$select_id.'">Sélectionner '. $key->Slider_Name .'</label>';
-								echo '<input id="'.$select_id.'" name="post[]" value="'.$id.'" type="checkbox">';
-								echo '<div class="locked-indicator">';
-									echo '<span class="locked-indicator-icon" aria-hidden="true"></span>';
-									echo '<span class="screen-reader-text">\"'. $key->Slider_Name .'\" est verrouillé</span>';
-								echo '</div>';
-							echo '</th>';
 							echo '<td class="title column-title has-row-actions column-primary page-title" data-colname="Titre">';
 								echo '<div class="locked-info">';
 									echo '<span class="locked-avatar"></span> ';
@@ -59,20 +49,19 @@ echo '<div id="acf-field-group-wrap" class="wrap">';
 								echo '</div>';
 								echo '<strong><a class="row-title" href="">'. $key->Slider_Name .'</a></strong>';
 								echo '<div class="row-actions">';
+
 									echo '<span class="edit inline">';
-									// form update lcs
-										echo '<form id="update" action="' . admin_url('admin.php?page=update_lcs') . '" method="post">';
-											echo '<input type="hidden" name="select_id" value="'.$id.'">';
-											echo '<a href="javascript:{}" onclick="document.getElementById(\'update\').submit(); return false;">modifier</a>';
-										echo '</form>';
+									// update lcs
+										echo '<input type="hidden" name="select_id" value="'.$id.'">';
+										echo '<a href="' . admin_url($url_update) . '" >modifier</a>';
 									echo '</span>';
+
 									echo '<span class="trash inline">';
-									// form delete lcs
-										echo '<form id="delete" action="' . admin_url('admin.php?page=lcs') . '" method="post">';
-											echo '<input type="hidden" name="delete" value="'.$id.'">';
-											echo '<a href="javascript:{}" onclick="document.getElementById(\'delete\').submit(); return false;">Supprimer</a>';
-										echo '</form>';
+									// delete lcs
+										echo '<input type="hidden" name="delete" value="'.$id.'">';
+										echo '<a href="' . admin_url($url_delete) . '">Supprimer</a>';
 									echo '</span>';
+
 								echo '</div>';
 							echo '</td>';
 							echo '<td class="id-column column">';
