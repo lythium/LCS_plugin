@@ -19,12 +19,7 @@ echo '<div id="acf-field-group-wrap" class="wrap">';
 		echo '<table class="wp-list-table widefat fixed striped pages">';
 			echo '<thead>';
 				echo '<tr>';
-					echo '<th id="title" class="manage-column column-title column-primary sortable desc" scope="col" >';
-						echo '<a href="" >';
-							echo '<span>Name Slide</span>';
-							echo '<span class="sorting-indicator"></span>';
-						echo '</a>';
-					echo '</th>';
+					echo '<th scope="col" id="fields" class="manage-column column-title column-primary column-fields">Name Slide</th>';
 					echo '<th scope="col" id="fields" class="manage-column column-fields">ID Slide</th>';
 					echo '<th scope="col" id="fields" class="manage-column column-fields">Categories</th>';
 					echo '<th scope="col" id="fields" class="manage-column column-fields">Shortcode</th>';
@@ -41,6 +36,7 @@ echo '<div id="acf-field-group-wrap" class="wrap">';
 						$url_delete = "admin.php?page=lcs&delete=".$id;
 						$categories_id = unserialize($key->Category_ID);
 						$select_id = "cb-select-" . $id;
+
 						echo '<tr class="iedit level-0 type-page status-publish hentry">';
 							echo '<td class="title column-title has-row-actions column-primary page-title" data-colname="Titre">';
 								echo '<div class="locked-info">';
@@ -48,21 +44,20 @@ echo '<div id="acf-field-group-wrap" class="wrap">';
 									echo '<span class="locked-text"></span>';
 								echo '</div>';
 								echo '<strong><a class="row-title" href="">'. $key->Slider_Name .'</a></strong>';
+								// Row action
 								echo '<div class="row-actions">';
-
 									echo '<span class="edit inline">';
 									// update lcs
 										echo '<input type="hidden" name="select_id" value="'.$id.'">';
 										echo '<a href="' . admin_url($url_update) . '" >modifier</a>';
-									echo '</span>';
-
+									echo '</span><span class="inline"> | </span>';
 									echo '<span class="trash inline">';
 									// delete lcs
 										echo '<input type="hidden" name="delete" value="'.$id.'">';
 										echo '<a href="' . admin_url($url_delete) . '">Supprimer</a>';
 									echo '</span>';
-
 								echo '</div>';
+
 							echo '</td>';
 							echo '<td class="id-column column">';
 								echo '<strong><span>'.$id.'</span></strong>';
