@@ -1,12 +1,16 @@
 <?php
 // Remove the event with specified delete
 global $wpdb;
+$row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category");
+if (!is_null($row)):
 var_dump($_POST);
-if (!empty($_POST['delete'])):
-	$delete_id = $_POST['delete'];
-	var_dump($delete_id);
-	$wpdb->delete("{$wpdb->prefix}lcs_category", array("Slider_id" => $delete_id));
+	if (!empty($_POST['delete'])):
+		$delete_id = $_POST['delete'];
+		var_dump($delete_id);
+		$wpdb->delete("{$wpdb->prefix}lcs_category", array("Slider_id" => $delete_id));
+	endif;
 endif;
+
 echo '<div id="acf-field-group-wrap" class="wrap">';
 	echo '<div class="acf-columns-2">';
 		echo '<h1 class="wp-heading-inline">'.get_admin_page_title().'</h1>';
@@ -31,6 +35,8 @@ echo '<div id="acf-field-group-wrap" class="wrap">';
 				echo '</tr>';
 			echo '</thead>';
 			echo '<tbody id"the-list">';
+			$row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category");
+			if (!is_null($row)):
 				$results = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}lcs_category");
 				if ($results):
 					foreach ($results as $key ):
@@ -53,11 +59,17 @@ echo '<div id="acf-field-group-wrap" class="wrap">';
 								echo '</div>';
 								echo '<strong><a class="row-title" href="">'. $key->Slider_Name .'</a></strong>';
 								echo '<div class="row-actions">';
-									echo '<span class="edit inline"><a href="">Modifier</a></span>';
+									echo '<span class="edit inline">';
+									// form update lcs
+										echo '<form id="update" action="' . admin_url('admin.php?page=update_lcs') . '" method="post">';
+											echo '<input type="hidden" name="select_id" value="'.$id.'">';
+											echo '<a href="javascript:{}" onclick="document.getElementById(\'update\').submit(); return false;">modifier</a>';
+										echo '</form>';
+									echo '</span>';
 									echo '<span class="trash inline">';
+									// form delete lcs
 										echo '<form id="delete" action="' . admin_url('admin.php?page=lcs') . '" method="post">';
 											echo '<input type="hidden" name="delete" value="'.$id.'">';
-											// echo '<input type="submit" class="delete" value="Delete" />';
 											echo '<a href="javascript:{}" onclick="document.getElementById(\'delete\').submit(); return false;">Supprimer</a>';
 										echo '</form>';
 									echo '</span>';
@@ -79,16 +91,14 @@ echo '<div id="acf-field-group-wrap" class="wrap">';
 							echo '</td>';
 						echo'</th>';
 					endforeach;
-				else:
-					echo '<tr class="no-items">';
-						echo '<td class="colspanchange" colspan="7">Sorry, None Category Slide</td>';
-					echo '</tr>';
 				endif;
+			else:
+				echo '<tr class="no-items">';
+					echo '<td class="colspanchange" colspan="7">Sorry, None Category Slide</td>';
+				echo '</tr>';
+			endif;
 			echo '</tbody>';
 		echo '</table>';
 	echo '</div>';
 echo '</div>';
  ?>
-<style media="screen">
-
-</style>
