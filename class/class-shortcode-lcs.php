@@ -17,8 +17,8 @@ class Shortcode_LCS
 		$results = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_id = '$id_shortcode'");
 		if ($results):
 			foreach ($results as $key ):
-				$type = $key->LCS_Type
-				$number = $key->LCS_number
+				$type = $key->LCS_Type;
+				$number = $key->LCS_number;
 				if ($number === "2"):
 					$col_size = "col-md-6";
 				elseif ($number === "3"):
@@ -33,6 +33,30 @@ class Shortcode_LCS
 				endif;
 			endforeach;
 		endif;
+	}
+	public function substrwords($text, $maxchar, $end='...') 
+	{
+		// Cut string
+	    if (strlen($text) > $maxchar || $text == '') {
+	        $words = preg_split('/\s/', $text);
+	        $output = '';
+	        $i      = 0;
+	        while (1) {
+	            $length = strlen($output)+strlen($words[$i]);
+	            if ($length > $maxchar) {
+	                break;
+	            }
+	            else {
+	                $output .= " " . $words[$i];
+	                ++$i;
+	            }
+	        }
+	        $output .= $end;
+	    }
+	    else {
+	        $output = $text;
+	    }
+	    return $output;
 	}
 }
 
