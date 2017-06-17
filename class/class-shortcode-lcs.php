@@ -15,7 +15,24 @@ class Shortcode_LCS
 		$atts = shortcode_atts(array('num' => $default), $atts);
 		$id_shortcode = $atts["num"];
 		$results = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_id = '$id_shortcode'");
-		include_once plugin_dir_path( __FILE__ ).'../views/front/fo-display-lcs.php';
+		if ($results):
+			foreach ($results as $key ):
+				$type = $key->LCS_Type
+				$number = $key->LCS_number
+				if ($number === "2"):
+					$col_size = "col-md-6";
+				elseif ($number === "3"):
+					$col_size = "col-md-4";
+				elseif ($number === "4"):
+					$col_size = "col-md-3";
+				endif;
+				if ($type === "1"):
+					include_once plugin_dir_path( __FILE__ ).'../views/front/fo-slide-lcs.php';
+				elseif ($type === "2"):
+					include_once plugin_dir_path( __FILE__ ).'../views/front/fo-card-lcs.php';
+				endif;
+			endforeach;
+		endif;
 	}
 }
 

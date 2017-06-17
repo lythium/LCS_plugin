@@ -29,7 +29,6 @@ class Update_LCS
 					$row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_id = '$id_update'");
 					if (!is_null($row)):
 						$wpdb->update("{$wpdb->prefix}lcs_category", array('LCS_Name' => $name_slide, 'LCS_Type' => $slider_type, 'LCS_number' => $slider_numder, 'Category_ID' => $all_id), array('LCS_id' => $id_update), array( "%s", "%d", "%d", "%s", ), array( "%d"));
-						return true;
 					endif;
 				endif;
 			endif;
@@ -37,4 +36,4 @@ class Update_LCS
 	}
 }
 
- ?>
+?>
