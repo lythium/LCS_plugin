@@ -87,7 +87,7 @@ echo '<div id="acf-field-group-wrap" class="wrap lcs-display">';
 							echo '<td class="category-column column">';
 							foreach ( 	$categories_id as $cat_id ):
 								$cat_name = get_cat_name( $cat_id );
-								echo '<span>' . $cat_name . '</span><br>';
+								echo '<span>' . $cat_name . '.</span><br>';
 							endforeach;
 							echo '</td>';
 						// Shortcode
