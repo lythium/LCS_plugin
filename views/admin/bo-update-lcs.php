@@ -4,6 +4,7 @@ if (empty($_GET["select"])):
 	header('Location: /wp-admin/admin.php?page=lcs');
 else :
 	$id_select = $_GET["select"];
+
 	var_dump($id_select);
 	echo '<div class="wrap lcs-display">';
 		echo '<h1 class="wp-heading-inline">'.get_admin_page_title().'</h1>';
@@ -17,14 +18,15 @@ else :
 		if ($results):
 			foreach ($results as $key ):
 				$id = $key->LCS_id;
+				$url_update =  "admin.php?page=update_lcs&select=".$id;
 				$type_select = $key->LCS_Type;
 				$numb_select = $key->LCS_number;
 				$name = sprintf("%s", $key->LCS_Name);
 				$categories_id = unserialize($key->Category_ID);
-					echo '<form id="update-meta" method="post" enctype="multipart/form-data">';
+					echo '<form action="' . admin_url($url_update) . '" id="update-meta" method="post" enctype="multipart/form-data">';
 						echo '<div id="section-1" class="section">';
 							echo '<div class="section-container">';
-								echo '<label for="lcs_name_add"> <strong> Nom du Slider </strong> </label> <input type="text" id="lcs_name_add" name="lcs_name_add" value=""><br>';
+								echo '<label for="lcs_name_update"> <strong> Nom du Slider </strong> </label> <input type="text" id="lcs_name_update" name="lcs_name_update" value="'.$name.'"><br>';
 							echo '</div>';
 						echo '</div>';
 
@@ -32,8 +34,8 @@ else :
 							echo '<div class="section-container">';
 								echo '<label for="groupe-type"> <strong> Choix du Type </strong> </label><br>';
 								echo '<div id="groupe-type" class="menu-settings-input radio-input">';
-									echo '<input type="radio" id="lcs_type_add" name="lcs_type_add" value="1" '. checked($type_select, 1, false) .' ><label for="lcs_type_add"> Slide </label><br>';
-									echo '<input type="radio" id="lcs_type_add" name="lcs_type_add" value="2" '. checked($type_select, 2, false) .' ><label for="lcs_type_add"> Card </label><br>';
+									echo '<input type="radio" id="lcs_type_update" name="lcs_type_update" value="1" '. checked($type_select, 1, false) .' ><label for="lcs_type_update"> Slide </label><br>';
+									echo '<input type="radio" id="lcs_type_update" name="lcs_type_update" value="2" '. checked($type_select, 2, false) .' ><label for="lcs_type_update"> Card </label><br>';
 								echo '</div>';
 								echo '<br>';
 								echo '<br>';
@@ -42,8 +44,8 @@ else :
 
 						echo '<div id="section-3" class="section">';
 							echo '<div class="section-container">';
-								echo '<label for="lcs_number_add"> <strong> Nombre d\'affichage sur une ligne </strong> </label><br>';
-								echo '<select id="lcs_number_add" name="lcs_number_add">';
+								echo '<label for="lcs_number_update"> <strong> Nombre d\'affichage sur une ligne </strong> </label><br>';
+								echo '<select id="lcs_number_update" name="lcs_number_update">';
 									echo '<option value="2" ' . selected( $numb_select, 2 ) . '>2</option>';
 									echo '<option value="3"' . selected( $numb_select, 3 ) . '>3</option>';
 									echo '<option value="4"' . selected( $numb_select, 4 ) . '>4</option>';
@@ -53,7 +55,7 @@ else :
 
 						echo '<div id="section-4" class="section">';
 							echo '<div class="section-container">';
-								echo '<label for="lcs_category_add"> <strong> Choix des Categories </strong> </label><br>';
+								echo '<label for="lcs_category_update"> <strong> Choix des Categories </strong> </label><br>';
 								$categories = get_categories( array(
 									'orderby' => 'id',
 									'order'   => 'ASC'
@@ -69,7 +71,7 @@ else :
 										endif;
 										echo '<li>';
 											echo '<label class="menu-item-category">';
-											echo '<input type="checkbox" class="category-item-id" name"category-id" value="'.$category->cat_ID.'" '.$checked.'>';
+											echo '<input type="checkbox" id="lcs_category_update" name"lcs_category_update[]" value="'.$category->cat_ID.'" '.$checked.'>';
 											echo $category->name;
 											echo '</label>';
 										echo '</li>';
