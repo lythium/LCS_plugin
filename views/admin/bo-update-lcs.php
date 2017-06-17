@@ -19,7 +19,7 @@ else :
 					$id = $key->Slider_id;
 					$name = sprintf("%s", $key->Slider_Name);
 					$categories_id = unserialize($key->Category_ID);
-					echo '<div class="section-one">';
+					echo '<div class="section section-one">';
 						echo '<h3>Options</h3>';
 						echo '<form id="update-meta" method="post" enctype="multipart/form-data">';
 							echo '<div class="section-title">';
@@ -29,31 +29,43 @@ else :
 							echo '</div>';
 
 							echo '<div id="menu-content" class="wp-clearfix">';
-								echo '<div class="menu-settings">';
-										echo '<h4> Type </h4>';
-										echo '<div class="menu-settings-input radio-input">';
-											echo '<input type="radio" id="type_lcs" name="type_lcs" value="1"><label for="type_lcs"> Slide </label><br>';
-											echo '<input type="radio" id="type_lcs" name="type_lcs" value="2"><label for="type_lcs"> Card </label><br>';
-										echo '</div>';
+								echo '<div class="slide-settings">';
+									echo '<h4> Type </h4>';
+									echo '<div class="menu-settings-input radio-input">';
+										echo '<input type="radio" id="type_lcs" name="type_lcs" value="1"><label for="type_lcs"> Slide </label><br>';
+										echo '<input type="radio" id="type_lcs" name="type_lcs" value="2"><label for="type_lcs"> Card </label><br>';
+									echo '</div>';
 								echo '</div>';
 							echo '</div>';
 						echo '</form>';
 					echo '</div>';
-					echo '<div class="section-two">';
-						echo '<h3> Category </h3>';
-						echo '<div class="section-content">';
-							echo '<ul class="categorychecklist form-no-clear"';
-							foreach ($categories_id as $cat_id ):
-								$cat_name = get_cat_name( $cat_id );
-								echo '<li>';
-									echo '<label class="menu-item-category">';
-									echo '<input type="checkbox" class="category-item-id" name"category-id" value="'.$cat_id.'">';
-									echo 	$cat_name;
-									echo '</label>';
-								echo '</li>';
-							endforeach;
-							echo '</ul>';
-						echo '</div>';
+
+					echo '<div class="section section-two">';
+						echo '<form id="update-category" method="post" enctype="multipart/form-data">';
+							echo '<h3> Category </h3>';
+							echo '<div class="section-content">';
+								echo '<ul class="categorychecklist">';
+
+								$categories = get_categories( array(
+									'orderby' => 'id',
+									'order'   => 'ASC'
+								) );
+								foreach ($categories as $category):
+									if (in_array($category->cat_ID, $categories_id)):
+										$checked = "checked";
+									else :
+										$checked = "";
+									endif;
+									echo '<li>';
+										echo '<label class="menu-item-category">';
+										echo '<input type="checkbox" class="category-item-id" name"category-id" value="'.$category->cat_ID.'" '.$checked.'>';
+										echo $category->name;
+										echo '</label>';
+									echo '</li>';
+								endforeach;
+								echo '</ul>';
+							echo '</div>';
+						echo '</form>';
 					echo '</div>';
 				endforeach;
 			endif;
@@ -62,7 +74,18 @@ else :
 endif;
  ?>
 <style media="screen">
-	#menu-management-settings {
-		padding-top: 15px;
+	.section-one {
+		margin: 10px;
+		padding: 10px;
+		background-color: #FFFFFF;
+	}
+	.section-two {
+		margin: 10px;
+		padding: 10px;
+		background-color: #FFFFFF;
+	}
+	.section h3 {
+		margin-top: 0px;
+		background-color: #F5F5F5;
 	}
 </style>
