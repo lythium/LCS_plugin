@@ -5,7 +5,7 @@ if (empty($_GET["select"])):
 else :
 	$id_select = $_GET["select"];
 	var_dump($id_select);
-	echo '<div class="wrap">';
+	echo '<div class="wrap lcs-display">';
 		echo '<h1 class="wp-heading-inline">'.get_admin_page_title().'</h1>';
 		echo '<a class="page-title-action hide-if-no-customize" href="' . admin_url('admin.php?page=add_lcs') . '" class="page-title-action">Ajouter</a>';
 		echo '<hr class="wp-header-end"></hr>';
