@@ -19,7 +19,7 @@ else :
 					$id = $key->Slider_id;
 					$name = sprintf("%s", $key->Slider_Name);
 					$categories_id = unserialize($key->Category_ID);
-					echo '<div class="section section-one">';
+					echo '<div id="section-one" class="section">';
 						echo '<h3>Options</h3>';
 						echo '<form id="update-meta" method="post" enctype="multipart/form-data">';
 							echo '<div class="section-title">';
@@ -40,7 +40,7 @@ else :
 						echo '</form>';
 					echo '</div>';
 
-					echo '<div class="section section-two">';
+					echo '<div id="section-two" class="section">';
 						echo '<form id="update-category" method="post" enctype="multipart/form-data">';
 							echo '<h3> Category </h3>';
 							echo '<div class="section-content">';
@@ -74,12 +74,12 @@ else :
 endif;
  ?>
 <style media="screen">
-	.section-one {
+	#section-one {
 		margin: 10px;
 		padding: 10px;
 		background-color: #FFFFFF;
 	}
-	.section-two {
+	#section-two {
 		margin: 10px;
 		padding: 10px;
 		background-color: #FFFFFF;
