@@ -18,6 +18,12 @@ echo '<form action="' . admin_url('admin.php?page=lcs') . '" method="post">';
 	echo '</div>';
 
 	echo '<div id="section-3" class="section">';
+		echo '<label for="lcs_number_add"> <strong> Nombre d\'affichage sur une ligne </strong> </label><br>';
+		echo '<select id="lcs_number_add" name="lcs_number_add">';
+			echo '<option value="2" selected>2</option>';
+			echo '<option value="3">3</option>';
+			echo '<option value="4">4</option>';
+		echo '</select>';
 	echo '</div>';
 
 	echo '<div id="section-4" class="section">';

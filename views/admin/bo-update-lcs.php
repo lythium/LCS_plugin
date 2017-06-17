@@ -10,14 +10,14 @@ else :
 		echo '<a class="page-title-action hide-if-no-customize" href="' . admin_url('admin.php?page=add_lcs') . '" class="page-title-action">Ajouter</a>';
 		echo '<hr class="wp-header-end"></hr>';
 
-		$row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE Slider_id = '$id_select'");
+		$row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_id = '$id_select'");
 		if (!is_null($row)):
-			$results = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}lcs_category WHERE Slider_id = '$id_select'");
+			$results = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_id = '$id_select'");
 
 			if ($results):
 				foreach ($results as $key ):
-					$id = $key->Slider_id;
-					$name = sprintf("%s", $key->Slider_Name);
+					$id = $key->LCS_id;
+					$name = sprintf("%s", $key->LCS_Name);
 					$categories_id = unserialize($key->Category_ID);
 					echo '<div id="section-one" class="section">';
 						echo '<h3>Options</h3>';

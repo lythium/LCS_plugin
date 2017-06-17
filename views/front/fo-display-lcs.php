@@ -2,7 +2,7 @@
 echo '<div class="row lcs_' . $id_shortcode . '">';
 if ($results):
 	foreach ($results as $key ):
-		echo '<h3 class="title_lcs">Name :' . $key->Slider_Name . '</h3><br>';
+		echo '<h3 class="title_lcs">Name :' . $key->LCS_Name . '</h3><br>';
 		echo '<br>';
 		$categories_id = unserialize($key->Category_ID);
 		foreach ( 	$categories_id as $cat_id ):

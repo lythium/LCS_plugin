@@ -7,7 +7,7 @@ var_dump($_GET);
 	if (!empty($_GET['delete'])):
 		$delete_id = $_GET['delete'];
 		var_dump($delete_id);
-		$wpdb->delete("{$wpdb->prefix}lcs_category", array("Slider_id" => $delete_id));
+		$wpdb->delete("{$wpdb->prefix}lcs_category", array("LCS_id" => $delete_id));
 	endif;
 endif;
 
@@ -31,7 +31,7 @@ echo '<div id="acf-field-group-wrap" class="wrap">';
 				$results = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}lcs_category");
 				if ($results):
 					foreach ($results as $key ):
-						$id = $key->Slider_id;
+						$id = $key->LCS_id;
 						$url_update =  "admin.php?page=update_lcs&select=".$id;
 						$url_delete = "admin.php?page=lcs&delete=".$id;
 						$categories_id = unserialize($key->Category_ID);
@@ -43,7 +43,7 @@ echo '<div id="acf-field-group-wrap" class="wrap">';
 									echo '<span class="locked-avatar"></span> ';
 									echo '<span class="locked-text"></span>';
 								echo '</div>';
-								echo '<strong><a class="row-title" href="">'. $key->Slider_Name .'</a></strong>';
+								echo '<strong><a class="row-title" href="">'. $key->LCS_Name .'</a></strong>';
 								// Row action
 								echo '<div class="row-actions">';
 									echo '<span class="edit inline">';
@@ -70,7 +70,7 @@ echo '<div id="acf-field-group-wrap" class="wrap">';
 							echo '</td>';
 							echo '<td class="id-column column">';
 								echo '<span>';
-								echo '<strong>[category_show num=' . $key->Slider_id . ']</strong>';
+								echo '<strong>[category_show num=' . $key->LCS_id . ']</strong>';
 								echo '</span>';
 							echo '</td>';
 						echo'</th>';
