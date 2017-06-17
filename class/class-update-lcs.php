@@ -18,16 +18,18 @@ class Update_LCS
 	public function update_settings()
 	{
 		global $wpdb;
-		if (isset($_POST['lcs_name_add']) && !empty($_POST['lcs_name_add'])):
-			if (isset($_POST['lcs_type_add']) && !empty($_POST['lcs_type_add'])):
-				if (isset($_POST['lcs_category_add']) && !empty($_POST['lcs_category_add'])):
-					$name_slide = $_POST['lcs_name_add'];
-					$all_id = serialize($_POST['lcs_category_add']);
-					$slider_type = $_POST['lcs_type_add'];
-					$slider_numder = $_POST['lcs_number_add'];
-					$row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_Name = '$name_slide'");
-					if (is_null($row)):
-						$wpdb->insert("{$wpdb->prefix}lcs_category", array('LCS_Name' => $name_slide, 'LCS_Type' => $slider_type, 'LCS_number' => $slider_numder, 'Category_ID' => $all_id));
+		if (isset($_POST['lcs_name_update']) && !empty($_POST['lcs_name_update'])):
+			if (isset($_POST['lcs_type_update']) && !empty($_POST['lcs_type_update'])):
+				if (isset($_POST['lcs_category_update']) && !empty($_POST['lcs_category_update'])):
+					$id_update = $_POST['select_id'];
+					$name_slide = $_POST['lcs_name_update'];
+					$all_id = serialize($_POST['lcs_category_update']);
+					$slider_type = $_POST['lcs_type_update'];
+					$slider_numder = $_POST['lcs_number_update'];
+					$row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_id = '$id_update'");
+					var_dump($row);
+					if (!is_null($row)):
+						$wpdb->update("{$wpdb->prefix}lcs_category", array('LCS_Name' => $name_slide, 'LCS_Type' => $slider_type, 'LCS_number' => $slider_numder, 'Category_ID' => $all_id), array('LCS_id' => $id_update));
 					endif;
 				endif;
 			endif;

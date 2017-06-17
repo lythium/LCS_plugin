@@ -1,5 +1,6 @@
 <?php
 global $wpdb;
+var_dump($_POST);
 if (empty($_GET["select"])):
 	header('Location: /wp-admin/admin.php?page=lcs');
 else :
@@ -26,6 +27,7 @@ else :
 					echo '<form action="' . admin_url($url_update) . '" id="update-meta" method="post" enctype="multipart/form-data">';
 						echo '<div id="section-1" class="section">';
 							echo '<div class="section-container">';
+								echo '<input type="hidden" name="select_id" value="'.$id.'">';
 								echo '<label for="lcs_name_update"> <strong> Nom du Slider </strong> </label> <input type="text" id="lcs_name_update" name="lcs_name_update" value="'.$name.'"><br>';
 							echo '</div>';
 						echo '</div>';
