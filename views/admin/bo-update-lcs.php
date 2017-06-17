@@ -1,6 +1,7 @@
 <?php
 global $wpdb;
 var_dump($_POST);
+echo $this->update_settings();
 if (empty($_GET["select"])):
 	header('Location: /wp-admin/admin.php?page=lcs');
 else :
