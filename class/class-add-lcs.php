@@ -22,7 +22,7 @@ class Add_LCS
 	{
 	    global $wpdb;
 
-	    $wpdb->query("CREATE TABLE IF NOT EXISTS {$wpdb->prefix}lcs_category (Slider_id INT AUTO_INCREMENT PRIMARY KEY, Slider_Name varchar(255) NOT NULL, Category_ID varchar(255) NOT NULL);");
+	    $wpdb->query("CREATE TABLE IF NOT EXISTS {$wpdb->prefix}lcs_category (Slider_id INT AUTO_INCREMENT PRIMARY KEY, Slider_Name varchar(255) NOT NULL,Slider_Type INT NOT NULL,Slider_number INT NOT NULL, Category_ID varchar(255) NOT NULL);");
 	}
 
 	public static function uninstall()
@@ -44,9 +44,11 @@ class Add_LCS
 			if (isset($_POST['lcs_category_add']) && !empty($_POST['lcs_category_add'])):
 				$name_slide = $_POST['lcs_name_add'];
 				$all_id = serialize($_POST['lcs_category_add']);
+				$slider_type = $_POST['lcs_type_add'];
+				$slider_numder = $_POST['lcs_number_add'];
 				$row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE Slider_Name = '$name_slide'");
 				if (is_null($row)):
-					$wpdb->insert("{$wpdb->prefix}lcs_category", array('Slider_Name' => $name_slide, 'Category_ID' => $all_id));
+					$wpdb->insert("{$wpdb->prefix}lcs_category", array('Slider_Name' => $name_slide, 'Slider_Type' => $slider_type, 'Slider_number' => $slider_number, 'Category_ID' => $all_id));
 				endif;
 			endif;
 		endif;
