@@ -17,7 +17,8 @@ echo '<div class="row slide-container-lcs lcs_' . $id_shortcode . '">';
 			$id_last = $posts_last[0]->ID;
 
 			if ($count === 0):
-				echo '<li class="SlidePart">';
+			echo '<li class="SlidePart">';
+				echo '<div class="SlidePart-container">';
 			endif;
 					echo '<div class="card-container">';
 						echo '<a class="card-lcs-link" href="' . get_category_link($cat_id) . '">';
@@ -28,8 +29,9 @@ echo '<div class="row slide-container-lcs lcs_' . $id_shortcode . '">';
 							endif;
 						echo'</a>';
 					echo '</div>';
-			$count++;
+					$count++;
 			if ($count === $max_count || $cat_id === end($categories_id)):
+				echo '</div>';
 			echo '</li>';
 			$count = 0;
 			endif;
@@ -45,11 +47,30 @@ echo '</div>';
 <script>
 	$=jQuery.noConflict();
 	$(document).ready(function() {
-		$(function(){
-			setInterval(function(){
-				$(".slide-in-container-lcs ul li:first-child")
-			}, 3500);
-		});
+		var widthFirst = $('.slide-in-container-lcs ul .SlidePart:first-child '),
+			resizeItems = $('.SlidePart');
+
+		$resizeItems
+			.width($widthFirst).width())
+
+		var currentIndex = 0,
+		 	items = $('.SlidePart'),
+		  	itemAmt = items.length;
+
+		function cycleItems() {
+			var item = $('.SlidePart').eq(currentIndex);
+				items.hide(0);
+				item.fadeIn("slow");
+			}
+
+			var autoSlide = setInterval(function() {
+				currentIndex += 1;
+			if (currentIndex > itemAmt - 1) {
+				currentIndex = 0;
+			}
+			cycleItems();
+			}, 3000);
+
 	});
 </script>
 
@@ -59,8 +80,8 @@ echo '</div>';
 	}
 	.slide-in-container-lcs {
 		max-width: 90%;
+		height: 170px;
 		margin: 10px auto!important;
-		overflow: hidden;
 		border: 3px solid #F2F2F2;
 	}
 	.slide-in-container-lcs ul {
@@ -70,59 +91,24 @@ echo '</div>';
 		text-align: center;
 	}
 	.SlidePart {
+		display: none;
+	}
+	.SlidePart-container {
 		width: 100%;
+		height: 100%;
 		margin: 0px;
 		display: inline-flex;
+		text-align: center;
 	}
 	.card-container {
-		margin-left: 10px;
-		margin-right: 10px;
-	}
-	.slide-lcs-nav {
-		width: 100%;
-		text-align: center;
-		font-size: 18px!important;
-		position: absolute;
-		left: 50%;
-		bottom: 0;
-		transform: translate(-50%,0%);
-		-ms-transform: translate(-50%,0%);
-		padding: 0.01em 16px;
-	}
-	.lcs-left {
-		float: left!important;
-		cursor: pointer;
-	}
-	.lcs-right {
-		float: right!important;
-		cursor: pointer;
-	}
-	.lcs-white {
-		color: #000!important;
-		background-color: #ffffff!important;
-	}
-	.lcs-hover-white {
-		color: #ffffff;
-	}
-	.lcs-badge {
-		display: inline-block;
-		border-radius: 50%;
-		border: 1px solid #cccccc!important;
-		background-color: transparent;
-		height: 13px;
-		width: 13px;
-		padding: 0;
-		color: #fff;
-		text-align: center;
-	}
-	.lcs-section {
-		margin-top: 16px !important;
-		margin-bottom: 16px !important;
+		margin: 0px auto;
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 	.card-lcs-link {
 		display: block;
 		width: 100%;
-		height: 56.25%;
+		height: 100%;
 		border-radius: 10px;
 		overflow: hidden;
 		border: 3px outset #949494;
