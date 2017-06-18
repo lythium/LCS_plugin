@@ -1,35 +1,41 @@
 <?php
 echo '<div class="row slide-container-lcs lcs_' . $id_shortcode . '">';
 	echo '<div class="slide-in-container-lcs">';
-		$width = "400%";
-		echo '<ul style="width:'.$width.';">';
+		echo '<ul>';
 		$categories_id = unserialize($key->Category_ID);
+		if ($number === "2"):
+			$max_count = 2;
+		elseif ($number === "3"):
+			$max_count = 3;
+		elseif ($number === "4"):
+			$max_count = 4;
+		endif;
+		$count = 0;
 		foreach ( $categories_id as $cat_id ):
 			$cat_name = get_cat_name( $cat_id );
 			$posts_last = get_posts(array("cat" => $cat_id, "showposts" => 1));
 			$id_last = $posts_last[0]->ID;
 
-			echo '<li class="SlidePart row">';
-				echo '<a class="card-lcs-link" href="' . get_category_link($cat_id) . '">';
-					if ( has_post_thumbnail( $id_last ) ):
-						echo get_the_post_thumbnail( $id_last, 'thumbnail', array( 'class' => 'col-md-12' ) );
-					else :
-						echo '<img class="col-md-12" src="'.plugin_dir_url( __FILE__ ).'default.jpg">';
-					endif;
-				echo'</a>';
+			if ($count === 0):
+				echo '<li class="SlidePart">';
+			endif;
+					echo '<div class="card-container">';
+						echo '<a class="card-lcs-link" href="' . get_category_link($cat_id) . '">';
+							if ( has_post_thumbnail( $id_last ) ):
+								echo get_the_post_thumbnail( $id_last, 'thumbnail', array( 'class' => 'col-md-12' ) );
+							else :
+								echo '<img class="col-md-12" src="'.plugin_dir_url( __FILE__ ).'default.jpg">';
+							endif;
+						echo'</a>';
+					echo '</div>';
+			$count++;
+			if ($count === $max_count || $cat_id === end($categories_id)):
 			echo '</li>';
-
+			$count = 0;
+			endif;
 		endforeach;
 		echo '</ul>';
 
-		echo '<div class="slide-lcs-nav .lcs-white lcs-section">';
-			echo '<div class="lcs-left" onclick="plusDivs(-1)">❮</div>';
-			echo '<div class="lcs-right" onclick="plusDivs(1)">❯</div>';
-			for ($i=1; $i < 4 ; $i++):
-				echo '<span class="lcs-badge span-lcs lcs-hover-white" onclick="currentDiv('.$i.')"></span>';
-				echo ' ';
-			endfor;
-		echo '</div>';
 
 	echo '</div>';
 echo '</div>';
@@ -41,9 +47,7 @@ echo '</div>';
 	$(document).ready(function() {
 		$(function(){
 			setInterval(function(){
-				$(".slide-in-container-lcs ul li:first-child").animate({"margin-left": -350}, 800, function(){
-				 $(this).css("margin-left",0).appendTo(".slide-in-container-lcs ul");
-				});
+				$(".slide-in-container-lcs ul li:first-child")
 			}, 3500);
 		});
 	});
@@ -54,18 +58,25 @@ echo '</div>';
 
 	}
 	.slide-in-container-lcs {
-		max-width: 600px;
+		max-width: 90%;
 		margin: 10px auto!important;
 		overflow: hidden;
 		border: 3px solid #F2F2F2;
 	}
 	.slide-in-container-lcs ul {
-		padding:0; margin:0;
+		padding: 5px 15px;
+		margin:0;
 		list-style: none;
+		text-align: center;
 	}
 	.SlidePart {
-		float: left;
+		width: 100%;
 		margin: 0px;
+		display: inline-flex;
+	}
+	.card-container {
+		margin-left: 10px;
+		margin-right: 10px;
 	}
 	.slide-lcs-nav {
 		width: 100%;
