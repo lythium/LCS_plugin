@@ -20,7 +20,7 @@ echo '<div class="row card-container-lcs lcs_' . $id_shortcode . '">';
 								if ( has_post_thumbnail( $id_last ) ):
 									echo get_the_post_thumbnail( $id_last, 'thumbnail', array( 'class' => 'col-md-12' ) );
 								else :
-									echo '<img class="col-md-12" src="'.plugin_dir_path( __FILE__ ).'default.jpg">';
+									echo '<img class="col-md-12" src="'.plugin_dir_url( __FILE__ ).'default.jpg">';
 								endif;
 							echo'</a>';
 						echo '</div>';
