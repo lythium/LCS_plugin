@@ -17,7 +17,11 @@ echo '<div class="row card-container-lcs lcs_' . $id_shortcode . '">';
 						$id_last = $posts_last[0]->ID;
 						echo '<div class="card-lcs-last-post">';
 							echo '<a class="card-lcs-link" href="' . get_category_link($cat_id) . '">';
-								echo get_the_post_thumbnail( $id_last, 'thumbnail', array( 'class' => 'col-md-12' ) );
+								if ( has_post_thumbnail( $id_last ) ):
+									echo get_the_post_thumbnail( $id_last, 'thumbnail', array( 'class' => 'col-md-12' ) );
+								else :
+									echo '<img class="col-md-12" src="'.plugin_dir_path( __FILE__ ).'default.jpg">';
+								endif;
 							echo'</a>';
 						echo '</div>';
 					echo '</div>';
