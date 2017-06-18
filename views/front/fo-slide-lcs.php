@@ -47,11 +47,13 @@ echo '</div>';
 <script>
 	$=jQuery.noConflict();
 	$(document).ready(function() {
-		var widthFirst = $('.slide-in-container-lcs ul .SlidePart:first-child '),
+		setInterval(function() {
+			var widthFirst = $('.slide-in-container-lcs ul .SlidePart:first-child '),
 			resizeItems = $('.SlidePart');
 
-		$resizeItems
-			.width($widthFirst).width())
+			$resizeItems
+				.width($widthFirst.width());
+		}, 3500);
 
 		var currentIndex = 0,
 		 	items = $('.SlidePart'),
