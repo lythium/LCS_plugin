@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.input-checkbox span {
+  margin-right: 10px;
+}
+.section {
+  margin: 10px;
+  padding: 10px;
+  background-color: #FFFFFF;
+}
