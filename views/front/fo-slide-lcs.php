@@ -15,9 +15,11 @@ echo '<div class="row slide-container-lcs lcs_' . $id_shortcode . '">';
 			$cat_name = get_cat_name( $cat_id );
 			$posts_last = get_posts(array("cat" => $cat_id, "showposts" => 1));
 			$id_last = $posts_last[0]->ID;
-
+			if ($cat_id === reset($categories_id)):
+				$first = "lcs-slide-first";
+			endif;
 			if ($count === 0):
-			echo '<li class="SlidePart">';
+			echo '<li class="SlidePart '.esc_attr($first).'">';
 				echo '<div class="SlidePart-container">';
 			endif;
 					echo '<div class="card-container">';
@@ -34,6 +36,7 @@ echo '<div class="row slide-container-lcs lcs_' . $id_shortcode . '">';
 				echo '</div>';
 			echo '</li>';
 			$count = 0;
+			$first = "";
 			endif;
 		endforeach;
 		echo '</ul>';
@@ -94,6 +97,9 @@ echo '</div>';
 	}
 	.SlidePart {
 		display: none;
+	}
+	.lcs-slide-first {
+		display: block;
 	}
 	.SlidePart-container {
 		width: 100%;
