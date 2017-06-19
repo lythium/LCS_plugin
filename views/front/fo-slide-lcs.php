@@ -3,13 +3,7 @@ echo '<div class="row slide-container-lcs lcs_' . $id_shortcode . '">';
 	echo '<div class="slide-in-container-lcs">';
 		echo '<ul>';
 		$categories_id = unserialize($key->Category_ID);
-		if ($number === "2"):
-			$max_count = 2;
-		elseif ($number === "3"):
-			$max_count = 3;
-		elseif ($number === "4"):
-			$max_count = 4;
-		endif;
+		
 		$count = 0;
 		foreach ( $categories_id as $cat_id ):
 			$cat_name = get_cat_name( $cat_id );

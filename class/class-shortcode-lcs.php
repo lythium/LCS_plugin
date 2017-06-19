@@ -19,6 +19,8 @@ class Shortcode_LCS
 			foreach ($results as $key ):
 				$type = $key->LCS_Type;
 				$number = $key->LCS_number;
+
+				// for display Type Card
 				if ($number === "2"):
 					$col_size = "col-md-6";
 				elseif ($number === "3"):
@@ -26,17 +28,26 @@ class Shortcode_LCS
 				elseif ($number === "4"):
 					$col_size = "col-md-3";
 				endif;
-				if ($type === "1"):
+				// for display Type Slider
+				if ($number === "2"):
+					$max_count = 2;
+				elseif ($number === "3"):
+					$max_count = 3;
+				elseif ($number === "4"):
+					$max_count = 4;
+				endif;
+
+				if ($type === "1"): // 1 = Type Slide
 					include_once plugin_dir_path( __FILE__ ).'../views/front/fo-slide-lcs.php';
-				elseif ($type === "2"):
+				elseif ($type === "2"): // 2 = Type Card
 					include_once plugin_dir_path( __FILE__ ).'../views/front/fo-card-lcs.php';
 				endif;
 			endforeach;
 		endif;
 	}
-	public function substrwords($text, $maxchar, $end='...') 
+	public function substrwords($text, $maxchar, $end='...')
 	{
-		// Cut string
+		// Cut string function
 	    if (strlen($text) > $maxchar || $text == '') {
 	        $words = preg_split('/\s/', $text);
 	        $output = '';
