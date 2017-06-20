@@ -1,12 +1,10 @@
 $=jQuery.noConflict();
 $(document).ready(function() {
-  setInterval(function() {
-    var widthFirst = $('.slide-in-container-lcs ul .SlidePart:first-child '),
-    resizeItems = $('.SlidePart');
-
-    $resizeItems
-      .width($widthFirst.width());
-  }, 3500);
+  var heightFirst = $(".lcs-slide-first .card-container").height(),
+      widthFirst = $(".lcs-slide-first .card-container").width();
+  setTimeout(function() {
+    $('.SlidePart .card-container').height(heightFirst).width(widthFirst);
+  }, 3000);
 
   var currentIndex = 0,
     items = $('.SlidePart'),
@@ -24,6 +22,6 @@ $(document).ready(function() {
       currentIndex = 0;
     }
     cycleItems();
-    }, 3000);
+  }, 4500);
 
 });

@@ -91,19 +91,3 @@ else :
 	echo '</div>';
 endif;
  ?>
-<style media="screen">
-	.section {
-		margin: 10px;
-		padding: 5px;
-		background-color: #FFFFFF;
-	}
-	.section-container {
-		padding: 10px;
-		background-color: #DDDDDD;
-		border-radius: 5px;
-	}
-	.section h3 {
-		margin-top: 0px;
-		background-color: #F5F5F5;
-	}
-</style>

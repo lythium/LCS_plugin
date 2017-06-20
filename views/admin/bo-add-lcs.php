@@ -55,13 +55,3 @@ echo '<div id="acf-field-group-wrap" class="wrap lcs-display">';
 echo '</div>';
 var_dump($_POST);
   ?>
-<style media="screen">
-	.input-checkbox span {
-		margin-right: 10px;
-	}
-	.section {
-		margin: 10px;
-		padding: 10px;
-		background-color: #FFFFFF;
-	}
-</style>

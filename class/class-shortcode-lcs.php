@@ -45,6 +45,7 @@ class Shortcode_LCS
 			endforeach;
 		endif;
 	}
+	
 	public function substrwords($text, $maxchar, $end='...')
 	{
 		// Cut string function

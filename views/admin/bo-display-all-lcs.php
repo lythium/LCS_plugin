@@ -109,11 +109,3 @@ echo '<div id="acf-field-group-wrap" class="wrap lcs-display">';
 	echo '</div>';
 echo '</div>';
  ?>
-<style media="screen">
-	.id-column {
-		width: 2.2em;
-		vertical-align: top;
-		border-right: 1px solid #e1e1e1;
-		text-align: center !important;
-	}
-</style>
