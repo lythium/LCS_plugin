@@ -51,7 +51,7 @@ class Lyth_CS_Plugin
 
 	public static function enqueue_lcs_scripts()
 	{
-		$js_file = plugins_url( '/js/demo.js', __FILE__ );
+		$js_file = plugins_url( 'javascript/lcs_script.js', __FILE__ );
 		wp_enqueue_script('lcs_style', $js_file, array('jquery'),false , "0.1");
 	}
 

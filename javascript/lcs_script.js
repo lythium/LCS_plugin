@@ -13,7 +13,7 @@ $(document).ready(function() {
   function cycleItems() {
     var item = $('.SlidePart').eq(currentIndex);
       items.hide(0);
-      item.fadeIn("slow");
+      item.fadeIn(1250);
     }
 
     var autoSlide = setInterval(function() {
