@@ -76,14 +76,14 @@ else :
 								else :
 									$checked = "";
 								endif;
-								echo '<li>';
-									echo '<label class="menu-item-category">';
-									echo '<input type="checkbox" id="lcs_category_update" name="lcs_category_update[]" value="'.$category->cat_ID.'" '.$checked.'>';
-									echo $category->name;
-									echo '</label>';
-								echo '</li>';
-							endforeach;
-							 ?>
+							?>
+								<li>
+									<label class="menu-item-category">
+									<input type="checkbox" id="lcs_category_update" name="lcs_category_update[]" value="<?= $category->cat_ID ?>" <?= $checked ?> >
+									<?php echo $category->name; ?>
+									</label>
+								</li>
+							<?php endforeach; ?>
 							</ul>
 						</div>
 					</div>
