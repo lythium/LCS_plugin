@@ -1,0 +1,25 @@
+
+/*Back Office*/
+.id-column {
+  width: 2.2em;
+  vertical-align: top;
+  border-right: 1px solid #e1e1e1;
+  text-align: center !important;
+}
+.input-checkbox span {
+  margin-right: 10px;
+}
+.section {
+  margin: 10px;
+  padding: 5px;
+  background-color: #FFFFFF;
+}
+.section-container {
+  padding: 10px;
+  background-color: #DDDDDD;
+  border-radius: 5px;
+}
+.section h3 {
+  margin-top: 0px;
+  background-color: #F5F5F5;
+}
