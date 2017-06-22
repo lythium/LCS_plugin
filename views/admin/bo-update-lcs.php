@@ -1,7 +1,7 @@
 <?php
 global $wpdb;
-var_dump($_POST);
-echo $this->update_settings();
+// var_dump($_POST);
+// echo $this->update_settings();
 if (empty($_GET["select"])):
 	header('Location: /wp-admin/admin.php?page=lcs');
 else :
@@ -15,7 +15,7 @@ else :
 
 	<?php
 	$results = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_id = '$id_select'");
-	var_dump($results);
+	// var_dump($results);
 	if (!is_null($results)):
 		$id = $results->LCS_id;
 		$url_update =  "admin.php?page=update_lcs&select=".$id;
