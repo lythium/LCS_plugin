@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-        submit_button();
+        <?php submit_button(); ?>
     </form>
 </div>
 <?php var_dump($_POST); ?>
