@@ -5,89 +5,91 @@ echo $this->update_settings();
 if (empty($_GET["select"])):
 	header('Location: /wp-admin/admin.php?page=lcs');
 else :
-	$id_select = $_GET["select"];
+	$id_select = $_GET["select"]; ?>
 
-	var_dump($id_select);
-	echo '<div class="wrap lcs-display">';
-		echo '<h1 class="wp-heading-inline">'.get_admin_page_title().'</h1>';
-		echo '<a class="page-title-action hide-if-no-customize" href="' . admin_url('admin.php?page=add_lcs') . '" class="page-title-action">Ajouter</a>';
-		echo '<hr class="wp-header-end"></hr>';
 
-	$row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_id = '$id_select'");
-	if (!is_null($row)):
-		$results = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_id = '$id_select'");
+	<div class="wrap lcs-display">
+		<h1 class="wp-heading-inline"><?= get_admin_page_title() ?></h1>
+		<a class="page-title-action hide-if-no-customize" href="<?= admin_url('admin.php?page=add_lcs') ?>" class="page-title-action">Ajouter</a>
+		<hr class="wp-header-end"></hr>
 
-		if ($results):
-			foreach ($results as $key ):
-				$id = $key->LCS_id;
-				$url_update =  "admin.php?page=update_lcs&select=".$id;
-				$type_select = $key->LCS_Type;
-				$numb_select = $key->LCS_number;
-				$name = sprintf("%s", $key->LCS_Name);
-				$categories_id = unserialize($key->Category_ID);
-					echo '<form action="' . admin_url($url_update) . '" id="update-meta" method="post" enctype="multipart/form-data">';
-						echo '<div id="section-1" class="section">';
-							echo '<div class="section-container">';
-								echo '<input type="hidden" name="select_id" value="'.$id.'">';
-								echo '<label for="lcs_name_update"> <strong> Nom du Slider </strong> </label> <input type="text" id="lcs_name_update" name="lcs_name_update" value="'.$name.'"><br>';
-							echo '</div>';
-						echo '</div>';
+	<?php
+	$results = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_id = '$id_select'");
+	var_dump($results);
+	if (!is_null($results)):
+		$id = $results->LCS_id;
+		$url_update =  "admin.php?page=update_lcs&select=".$id;
+		$type_select = $results->LCS_Type;
+		$numb_select = $results->LCS_number;
+		$name = sprintf("%s", $results->LCS_Name);
+		$categories_id = unserialize($results->Category_ID);
+ 	?>
 
-						echo '<div id="section-2" class="section">';
-							echo '<div class="section-container">';
-								echo '<label for="groupe-type"> <strong> Choix du Type </strong> </label><br>';
-								echo '<div id="groupe-type" class="menu-settings-input radio-input">';
-									echo '<input type="radio" id="lcs_type_update" name="lcs_type_update" value="1" '. checked($type_select, 1, false) .' ><label for="lcs_type_update"> Slide </label><br>';
-									echo '<input type="radio" id="lcs_type_update" name="lcs_type_update" value="2" '. checked($type_select, 2, false) .' ><label for="lcs_type_update"> Card </label><br>';
-								echo '</div>';
-								echo '<br>';
-								echo '<br>';
-							echo '</div>';
-						echo '</div>';
+			<form action="<?= admin_url($url_update) ?>" id="update-meta" method="post" enctype="multipart/form-data">
+				<div id="section-1" class="section">
+					<div class="section-container">
+						<input type="hidden" name="select_id" value="'.$id.'">
+						<label for="lcs_name_update"> <strong> Nom du Slider </strong> </label> <input type="text" id="lcs_name_update" name="lcs_name_update" value="<?= $name ?>"><br>
+					</div>
+				</div>
 
-						echo '<div id="section-3" class="section">';
-							echo '<div class="section-container">';
-								echo '<label for="lcs_number_update"> <strong> Nombre d\'affichage sur une ligne </strong> </label><br>';
-								echo '<select id="lcs_number_update" name="lcs_number_update">';
-									echo '<option value="2" ' . selected( $numb_select, 2 ) . '>2</option>';
-									echo '<option value="3"' . selected( $numb_select, 3 ) . '>3</option>';
-									echo '<option value="4"' . selected( $numb_select, 4 ) . '>4</option>';
-								echo '</select>';
-							echo '</div>';
-						echo '</div>';
+				<div id="section-2" class="section">
+					<div class="section-container">
+						<label for="groupe-type"> <strong> Choix du Type </strong> </label><br>
+						<div id="groupe-type" class="menu-settings-input radio-input">
+							<input type="radio" id="lcs_type_update" name="lcs_type_update" value="1" <?= checked($type_select, 1, false) ?> ><label for="lcs_type_update"> Slide </label><br>
+							<input type="radio" id="lcs_type_update" name="lcs_type_update" value="2" <?= checked($type_select, 2, false) ?> ><label for="lcs_type_update"> Card </label><br>
+						</div>
+						<br>
+						<br>
+					</div>
+				</div>
 
-						echo '<div id="section-4" class="section">';
-							echo '<div class="section-container">';
-								echo '<label for="lcs_category_update"> <strong> Choix des Categories </strong> </label><br>';
-								$categories = get_categories( array(
-									'orderby' => 'id',
-									'order'   => 'ASC'
-								) );
-								$xyz = 0;
-								echo '<div class="input-checkbox">';
-									echo '<ul>';
-									foreach ($categories as $category):
-										if (in_array($category->cat_ID, $categories_id)):
-											$checked = "checked";
-										else :
-											$checked = "";
-										endif;
-										echo '<li>';
-											echo '<label class="menu-item-category">';
-											echo '<input type="checkbox" id="lcs_category_update" name="lcs_category_update[]" value="'.$category->cat_ID.'" '.$checked.'>';
-											echo $category->name;
-											echo '</label>';
-										echo '</li>';
-									endforeach;
-									echo '</ul>';
-								echo '</div>';
-							echo '</div>';
-						echo '</div>';
-						submit_button();
-					echo '</form>';
-				endforeach;
-			endif;
-		endif;
-	echo '</div>';
-endif;
- ?>
+				<div id="section-3" class="section">
+					<div class="section-container">
+						<label for="lcs_number_update"> <strong> Nombre d'affichage sur une ligne </strong> </label><br>
+						<select id="lcs_number_update" name="lcs_number_update">
+							<option value="2" <?= selected( $numb_select, 2 ) ?> >2</option>
+							<option value="3"<?= selected( $numb_select, 3 ) ?> >3</option>
+							<option value="4"<?= selected( $numb_select, 4 ) ?> >4</option>
+						</select>
+					</div>
+				</div>
+
+				<div id="section-4" class="section">
+					<div class="section-container">
+						<label for="lcs_category_update"> <strong> Choix des Categories </strong> </label><br>
+
+						<?php
+						$categories = get_categories( array(
+							'orderby' => 'id',
+							'order'   => 'ASC'
+						) );
+						$xyz = 0;
+						?>
+						<div class="input-checkbox">
+							<ul>
+							<?php
+							foreach ($categories as $category):
+								if (in_array($category->cat_ID, $categories_id)):
+									$checked = "checked";
+								else :
+									$checked = "";
+								endif;
+								echo '<li>';
+									echo '<label class="menu-item-category">';
+									echo '<input type="checkbox" id="lcs_category_update" name="lcs_category_update[]" value="'.$category->cat_ID.'" '.$checked.'>';
+									echo $category->name;
+									echo '</label>';
+								echo '</li>';
+							endforeach;
+							 ?>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<?php submit_button(); ?>
+			</form>
+		<?php endif; ?>
+	</div>
+<?php endif; ?>
