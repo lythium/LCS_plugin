@@ -1,0 +1,62 @@
+
+/*Back Office*/
+.id-column {
+  width: 2.2em;
+  vertical-align: top;
+  border-right: 1px solid #e1e1e1;
+  text-align: center !important;
+}
+.input-checkbox span {
+  margin-right: 10px;
+}
+.section {
+  margin: 10px;
+  padding: 5px;
+  background-color: #FFFFFF;
+}
+.section-btn {
+	background: transparent;
+}
+.section-container {
+  padding: 10px;
+  background-color: #DDDDDD;
+  border-radius: 5px;
+}
+.section h3 {
+  margin-top: 0px;
+  background-color: #F5F5F5;
+}
+.display-section {
+	display: flex;
+	flex-direction: row;
+}
+#left {
+	width: 40%
+}
+#right {
+	width: 40%
+}
+#toggle {
+	display: none;
+	visibility: hidden;
+}
+#label-toggle {
+	display: block;
+	padding: 0.5em;
+	text-align: center;
+	border-bottom: 1px solid #CCC;
+	color: #666;
+}
+#droplist {
+	display: none;
+}
+#toggle:checked ~ #droplist {
+	display: block!important;
+}
+.list-group {
+	display: flex;
+	flex-direction: column;
+}
+.list-group-item {
+	align-self: center;
+}

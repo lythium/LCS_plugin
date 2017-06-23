@@ -1,3 +1,9 @@
 # LCS_plugin
 
-Testing a VIM push
+## ToDo
+
+fix template syntax for 'fo-slide-lcs.php'
+
+## Hello from VIM
+
+Testing a push from VIM ! 
