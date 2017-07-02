@@ -22,7 +22,7 @@ class Add_LCS
     {
         global $wpdb;
 
-        $wpdb->query("CREATE TABLE IF NOT EXISTS {$wpdb->prefix}lcs_category (LCS_id INT AUTO_INCREMENT PRIMARY KEY, LCS_Name varchar(255) NOT NULL,LCS_Type INT NOT NULL,LCS_cards_options varchar(255), LCS_slide_options varchar(255), Category_ID varchar(255) NOT NULL);");
+        $wpdb->query("CREATE TABLE IF NOT EXISTS {$wpdb->prefix}lcs_category (LCS_id INT AUTO_INCREMENT PRIMARY KEY, LCS_Name varchar(255) NOT NULL, LCS_Type INT NOT NULL, LCS_cards_options varchar(255) NOT NULL, LCS_slide_options varchar(255) NOT NULL, Category_ID varchar(255) NOT NULL);");
     }
 
     public static function uninstall()
@@ -42,13 +42,8 @@ class Add_LCS
             $lcs_name = $_POST['lcs_name_add'];
             $all_id = serialize($_POST['lcs_category_add']);
             $lcs_type = $_POST['lcs_type_add'];
-			if ($lcs_type == 1) {
-				$cards_options = NULL;
-				$slide_options = serialize(array('number' => $_POST['lcs_number_slide_add'], 'animation' => $_POST['lcs_anim_slide_add']));
-			} elseif ($lcs_type == 2) {
-				$slide_options = NULL;
-				$cards_options = serialize(array('number' => $_POST['lcs_number_cards_add'], ));
-			}
+			$slide_options = serialize(array('number' => $_POST['lcs_number_slide_add'], 'animation' => $_POST['lcs_anim_slide_add']));
+			$cards_options = serialize(array('number' => $_POST['lcs_number_cards_add'], 'name' => 'test'));
             $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_Name = '$lcs_name'");
 
             if (is_null($row)) {

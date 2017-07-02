@@ -44,7 +44,7 @@
 					<div id="cards-op" class="option-cards">
 
 						<label for="lcs_number_cards_add"> <strong> Nombre d'affichage sur une ligne </strong> </label><br>
-						<select id="lcs_number_cards_add" name="lcs_number_add">
+						<select id="lcs_number_cards_add" name="lcs_number_cards_add">
 							<option value="3" selected>3</option>
 							<option value="4">4</option>
 							<option value="5">5</option>
