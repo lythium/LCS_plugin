@@ -18,7 +18,7 @@
 					<div class="SlidePart-container">
 					<?php endif; ?>
 					<div class="slide-card-container">
-						<a href="#"></a>
+<!-- Insert Name Category --><a href="#"></a> 
 						<a class="slide-card-lcs-link" href="<?= get_category_link($cat_id) ?>">
 							<?php if ( has_post_thumbnail( $id_last ) ): ?>
 								<?= get_the_post_thumbnail( $id_last, 'thumbnail', array( 'class' => 'col-md-12' ) ); ?>
