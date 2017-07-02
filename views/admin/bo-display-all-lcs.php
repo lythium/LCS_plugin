@@ -21,7 +21,7 @@ if (!is_null($row)) {
     <div class="acf-columns-2">
         <h1 class="wp-heading-inline"><?= get_admin_page_title() ?></h1>
         <a class="page-title-action" href="<?= admin_url('admin.php?page=add_lcs') ?>" class="page-title-action">Ajouter</a>
-        <p>Bienvenue sur la page d\'accueil du plugin</p>
+        <p>Bienvenue sur la page d'accueil du plugin</p>
         <table class="wp-list-table widefat fixed striped pages">
             <thead>
                 <tr>
@@ -36,8 +36,8 @@ if (!is_null($row)) {
             <tbody id"the-list">
             <?php
 
-            // Why repeat same request ? 
-            // $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category"); // <- One 
+            // Why repeat same request ?
+            // $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category"); // <- One
             // if (!is_null($row)):
                 $results = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}lcs_category"); // <- Two
                 if ($results):
