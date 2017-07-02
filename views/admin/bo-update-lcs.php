@@ -19,7 +19,11 @@ else :
 		$id = $results->LCS_id;
 		$url_update =  "admin.php?page=update_lcs&select=".$id;
 		$type_select = $results->LCS_Type;
-		$numb_select = $results->LCS_number;
+		$cards_options = unserialize($results->LCS_cards_options);
+			$numb_cards_select = $cards_options[0];
+		$slide_options = unserialize($results->LCS_slide_options);
+			$numb_slide_select = $slide_options[0];
+			$anim_slide_select = $slide_options[1];
 		$name = sprintf("%s", $results->LCS_Name);
 		$categories_id = unserialize($results->Category_ID);
  	?>
@@ -47,14 +51,36 @@ else :
 
 					<div id="section-3" class="section">
 						<div class="section-container">
-							<label for="lcs_number_update"> <strong> Nombre d'affichage sur une ligne </strong> </label><br>
-							<select id="lcs_number_update" name="lcs_number_update">
-								<option value="2" <?= selected( $numb_select, 2 ) ?> >2</option>
-								<option value="3"<?= selected( $numb_select, 3 ) ?> >3</option>
-								<option value="4"<?= selected( $numb_select, 4 ) ?> >4</option>
-							</select>
+						<label for="" id="label-option"> <strong> Options </strong></label><br>
+							<!-- Options for Card -->
+							<div id="cards-op" class="option-cards">
+
+								<label for="lcs_number_cards_add"> <strong> Nombre d'affichage sur une ligne </strong> </label><br>
+								<select id="lcs_number_cards_add" name="lcs_number_add">
+									<option value="3" <?= selected( $numb_cards_select, 3 ) ?> >3</option>
+									<option value="4" <?= selected( $numb_cards_select, 4 ) ?> >4</option>
+									<option value="5" <?= selected( $numb_cards_select, 5 ) ?> >5</option>
+								</select>
+							</div>
+
+							<!-- Options for Slide -->
+							<div id="slide-op" class="option-slide">
+								<label for="lcs_number_slide_add"> <strong> Nombre d'affichage sur un slide </strong> </label><br>
+								<select id="lcs_number_slide_add" name="lcs_number_slide_add">
+									<option value="2" <?= selected( $numb_slide_select, 2 ) ?> >2</option>
+									<option value="3" <?= selected( $numb_slide_select, 3 ) ?> >3</option>
+									<option value="4" <?= selected( $numb_slide_select, 4 ) ?> >4</option>
+								</select>
+								<label for="lcs_anim_slide_add"> <strong> Animation de la transition </strong> </label><br>
+								<select id="lcs_anim_slide_add" name="lcs_anim_slide_add">
+									<option value="fade" <?= selected( $anim_slide_select, "fade" ) ?> >fade</option>
+									<option value="slideLeft" <?= selected( $anim_slide_select, "slideLeft" ) ?> >slideLeft</option>
+									<option value="slideDown" <?= selected( $anim_slide_select, "slideDown" ) ?> >slideDown</option>
+								</select>
+							</div>
 						</div>
-					</div>
+			        </div>
+
 					<div class="section section-btn">
 						<?php submit_button(); ?>
 					</div>
