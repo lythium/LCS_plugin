@@ -14,11 +14,11 @@
 					$first = "lcs-slide-first";
 				endif;
 				if ($count === 0): ?>
-				<li class="SlidePart animated slideInLeft <?= esc_attr($first) ?>">
+				<li class="SlidePart animated <?= esc_attr($anim) ?> <?= esc_attr($first) ?>">
 					<div class="SlidePart-container">
 					<?php endif; ?>
 					<div class="slide-card-container">
-<!-- Insert Name Category --><a href="#"></a> 
+<!-- Insert Name Category --><a href="#"></a>
 						<a class="slide-card-lcs-link" href="<?= get_category_link($cat_id) ?>">
 							<?php if ( has_post_thumbnail( $id_last ) ): ?>
 								<?= get_the_post_thumbnail( $id_last, 'thumbnail', array( 'class' => 'col-md-12' ) ); ?>

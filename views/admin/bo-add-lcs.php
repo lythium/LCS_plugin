@@ -36,7 +36,7 @@
 						<label for="lcs_anim_slide_add"> <strong> Animation de la transition </strong> </label><br>
 						<select id="lcs_anim_slide_add" name="lcs_anim_slide_add">
 							<option value="fade" selected>fade</option>
-							<option value="slideLeft">slideLeft</option>
+							<option value="slideInLeft">slideInLeft</option>
 							<option value="slideDown">slideDown</option>
 						</select>
 					</div>

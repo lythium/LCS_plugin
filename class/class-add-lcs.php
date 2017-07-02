@@ -42,17 +42,17 @@ class Add_LCS
             $lcs_name = $_POST['lcs_name_add'];
             $all_id = serialize($_POST['lcs_category_add']);
             $lcs_type = $_POST['lcs_type_add'];
+			// Serialize Options
 			$slide_options = serialize(array(
-											'number' => $_POST['lcs_number_slide_add'],
-											'animation' => $_POST['lcs_anim_slide_add']
-										));
+				'number' => $_POST['lcs_number_slide_add'],
+				'animation' => $_POST['lcs_anim_slide_add']
+			));
 			$cards_options = serialize(array(
-											'number' => $_POST['lcs_number_cards_add'],
-											'name' => 'test'
-										));
-										
-            $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_Name = '$lcs_name'");
+				'number' => $_POST['lcs_number_cards_add'],
+				'name' => 'test'
+			));
 
+            $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_Name = '$lcs_name'");
             if (is_null($row)) {
 				$wpdb->update(
 					$wpdb->prefix."lcs_category",

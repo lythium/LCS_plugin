@@ -67,7 +67,7 @@ else :
 								<label for="lcs_anim_slide_update"> <strong> Animation de la transition </strong> </label><br>
 								<select id="lcs_anim_slide_update" name="lcs_anim_slide_update">
 									<option value="fade" <?= selected( $anim_slide_select, "fade" ) ?> >fade</option>
-									<option value="slideLeft" <?= selected( $anim_slide_select, "slideLeft" ) ?> >slideLeft</option>
+									<option value="slideLeft" <?= selected( $anim_slide_select, "slideInLeft" ) ?> >slideInLeft</option>
 									<option value="slideDown" <?= selected( $anim_slide_select, "slideDown" ) ?> >slideDown</option>
 								</select>
 							</div>

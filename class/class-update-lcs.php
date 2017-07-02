@@ -29,15 +29,32 @@ class Update_LCS
             $lcs_name = $_POST['lcs_name_update'];
             $all_id = serialize($_POST['lcs_category_update']);
             $lcs_type = $_POST['lcs_type_update'];
-				$slide_options = serialize(array('number' => $_POST['lcs_number_slide_update'], 'animation' => $_POST['lcs_anim_slide_update']));
-				$cards_options = serialize(array('number' => $_POST["lcs_number_cards_update"], 'name' => 'test'));
-				echo '<script>console.log('.$cards_options.')</script>';
+			// Serialize Options
+			$slide_options = serialize(array(
+				'number' => $_POST['lcs_number_slide_update'],
+				'animation' => $_POST['lcs_anim_slide_update']
+			));
+			$cards_options = serialize(array(
+				'number' => $_POST["lcs_number_cards_update"],
+				'name' => 'test'
+			));
             $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_id = '$id_update'");
 
             if (!is_null($row)) {
-                $wpdb->update("{$wpdb->prefix}lcs_category", array('LCS_Name' => $lcs_name, 'LCS_Type' => $lcs_type, 'LCS_cards_options' => $cards_options,'LCS_slide_options' => $slide_options, 'Category_ID' => $all_id), array('LCS_id' => $id_update), array( "%s", "%d", "%s", "%s","%s" ), array( "%d"));
-				$alerts = "Update Done!";
+                $wpdb->update(
+					"{$wpdb->prefix}lcs_category",
+					array(
+						'LCS_Name' => $lcs_name,
+						'LCS_Type' => $lcs_type,
+						'LCS_cards_options' => $cards_options,
+						'LCS_slide_options' => $slide_options,
+						'Category_ID' => $all_id
+					),
+					array('LCS_id' => $id_update),
+					array( "%s", "%d", "%s", "%s","%s" ),
+					array( "%d")
+				);
 			}
         }
-    }
+    };
 }
