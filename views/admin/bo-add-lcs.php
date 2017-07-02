@@ -23,14 +23,31 @@
 	        </div>
 
 	        <div id="section-3" class="section">
-	            <div class="section-container">
-	                <label for="lcs_number_add"> <strong> Nombre d\'affichage sur une ligne </strong> </label><br>
-	                <select id="lcs_number_add" name="lcs_number_add">
-	                    <option value="2" selected>2</option>
-	                    <option value="3">3</option>
-	                    <option value="4">4</option>
-	                </select>
-	            </div>
+				<div class="section-container">
+				<label for="" id="label-option"> <strong> Options </strong></label><br>
+					<!-- Options for Card -->
+					<div id="cards-op" class="option-cards">
+
+						<label for="lcs_number_add"> <strong> Nombre d'affichage sur une ligne </strong> </label><br>
+						<select id="lcs_number_add" name="lcs_number_add">
+							<option value="2" selected>2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
+					</div>
+
+					<!-- Options for Slide -->
+					<div id="slide-op" class="option-cards">
+						<label for="lcs_number_add"> <strong> Nombre d'affichage sur un slide </strong> </label><br>
+						<select id="lcs_number_add" name="lcs_number_add">
+							<option value="2" selected>2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
+					</div>
+				</div>
+
+
 	        </div>
 			<div class="section section-btn">
 				<?php submit_button(); ?>

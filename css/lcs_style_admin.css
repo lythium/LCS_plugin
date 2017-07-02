@@ -30,6 +30,12 @@
 	display: flex;
 	flex-direction: row;
 }
+.option-cards {
+	display: none;
+}
+.option-slide {
+	display: none;
+}
 #left {
 	width: 40%
 }
@@ -40,7 +46,7 @@
 	display: none;
 	visibility: hidden;
 }
-#label-toggle {
+#label-toggle, #label-option {
 	display: block;
 	padding: 0.5em;
 	text-align: center;
