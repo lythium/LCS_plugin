@@ -1,7 +1,11 @@
 $=jQuery.noConflict();
 $(document).ready(function() {
-	$('#groupe-type').on("change","input[type=radio]",function(){
+	$('#groupe-type-add').on("change","input[type=radio]",function(){
 	    var type = $('[name="lcs_type_add"]:checked').val();
+		DisplayOptions (type);
+	});
+	$('#groupe-type-update').on("change","input[type=radio]",function(){
+	    var type = $('[name="lcs_type_update"]:checked').val();
 		DisplayOptions (type);
 	});
 
