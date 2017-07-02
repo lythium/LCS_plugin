@@ -9,16 +9,35 @@ $(document).ready(function() {
 	var currentIndex = 0,
 		items = $('.SlidePart'),
 		itemAmt = items.length;
+
 	function variableAnimation() {
 		var varAnim = $('#variable-anim').val();
 		return varAnim;
 	};
+
+	function reverseAnimation(anim) {
+		if (anim == "slideInLeft") {
+			var animReverse = "slideOutRight";
+			return animReverse;
+		} else if (anim == "fadeIn") {
+			var animReverse = "fadeOut";
+			return animReverse;
+		} else if (anim == "slideInDown") {
+			var animReverse = "slideOutDown";
+			return animReverse;
+		}
+	};
+
 	var anim = variableAnimation();
+		animReverse = reverseAnimation(anim);
+
 	console.log(anim);
+	console.log(animReverse);
+
 	function cycleItems() {
 		var item = $('.SlidePart').eq(currentIndex);
-		items.removeClass('slideInLeft').addClass('slideOutRight').fadeOut(500);
-		item.removeClass('slideOutRight').addClass('slideInLeft').delay(500).fadeIn(1250);
+		items.removeClass(anim).addClass(animReverse).fadeOut(500);
+		item.removeClass(animReverse).addClass(anim).delay(500).fadeIn(1250);
 	};
 
 	var autoSlide = setInterval(function() {
@@ -28,5 +47,4 @@ $(document).ready(function() {
 		}
 		cycleItems( );
 	}, 7000);
-
 });
