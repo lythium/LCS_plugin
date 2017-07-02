@@ -28,6 +28,7 @@ class Lyth_CS_Plugin
         add_action('wp_enqueue_scripts', array( __CLASS__, 'enqueue_lcs_scripts' ));
 
 		add_action('admin_enqueue_scripts', array( __CLASS__, 'enqueue_lcs_styles_admin' ));
+		add_action('admin_enqueue_scripts', array( __CLASS__, 'enqueue_lcs_scripts_admin' ));
 
         register_activation_hook(__FILE__, array('Add_LCS', 'install'));
         register_uninstall_hook(__FILE__, array('Add_LCS', 'uninstall'));
@@ -53,7 +54,7 @@ class Lyth_CS_Plugin
     public static function enqueue_lcs_scripts()
     {
         $js_file = plugins_url('javascript/lcs_script.js', __FILE__);
-        wp_enqueue_script('lcs_style', $js_file, array('jquery'), false, "0.1");
+        wp_enqueue_script('lcs_script', $js_file, array('jquery'), false, "0.1");
     }
 
 	public static function enqueue_lcs_styles_admin()
@@ -62,6 +63,11 @@ class Lyth_CS_Plugin
 		wp_enqueue_style('lcs_style_admin', $css_admin_file, false, "0.1");
 	}
 
+	public static function enqueue_lcs_scripts_admin()
+	{
+		$js_admin_file = plugins_url('javascript/lcs_script_admin.js', __FILE__);
+		wp_enqueue_script('lcs_script_admin', $js_file, array('jquery'), false, "0.1");
+	}
 }
 
 new Lyth_CS_Plugin();
