@@ -67,7 +67,6 @@ class Lyth_CS_Plugin
 	{
 		$js_admin_file = plugins_url('javascript/lcs_script_admin.js', __FILE__);
 		wp_enqueue_script('lcs_script_admin', $js_admin_file, array('jquery'), false, "0.1");
-		wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.2.1.min.js', array(), null, true);
 	}
 }
 

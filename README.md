@@ -3,6 +3,7 @@
 ## ToDo
 
 FO slide -> Name Category
+FO cards -> all update for new options
 
 ## Done
 

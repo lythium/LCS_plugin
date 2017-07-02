@@ -28,21 +28,27 @@
 					<!-- Options for Card -->
 					<div id="cards-op" class="option-cards">
 
-						<label for="lcs_number_add"> <strong> Nombre d'affichage sur une ligne </strong> </label><br>
-						<select id="lcs_number_add" name="lcs_number_add">
-							<option value="2" selected>2</option>
-							<option value="3">3</option>
+						<label for="lcs_number_cards_add"> <strong> Nombre d'affichage sur une ligne </strong> </label><br>
+						<select id="lcs_number_cards_add" name="lcs_number_add">
+							<option value="3" selected>3</option>
 							<option value="4">4</option>
+							<option value="5">5</option>
 						</select>
 					</div>
 
 					<!-- Options for Slide -->
-					<div id="slide-op" class="option-cards">
-						<label for="lcs_number_add"> <strong> Nombre d'affichage sur un slide </strong> </label><br>
-						<select id="lcs_number_add" name="lcs_number_add">
+					<div id="slide-op" class="option-slide">
+						<label for="lcs_number_slide_add"> <strong> Nombre d'affichage sur un slide </strong> </label><br>
+						<select id="lcs_number_slide_add" name="lcs_number_slide_add">
 							<option value="2" selected>2</option>
 							<option value="3">3</option>
 							<option value="4">4</option>
+						</select>
+						<label for="lcs_anim_slide_add"> <strong> Animation de la transition </strong> </label><br>
+						<select id="lcs_anim_slide_add" name="lcs_anim_slide_add">
+							<option value="fade" selected>fade</option>
+							<option value="slideLeft">slideLeft</option>
+							<option value="slideDown">slideDown</option>
 						</select>
 					</div>
 				</div>

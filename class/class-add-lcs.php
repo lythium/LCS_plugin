@@ -22,7 +22,7 @@ class Add_LCS
     {
         global $wpdb;
 
-        $wpdb->query("CREATE TABLE IF NOT EXISTS {$wpdb->prefix}lcs_category (LCS_id INT AUTO_INCREMENT PRIMARY KEY, LCS_Name varchar(255) NOT NULL,LCS_Type INT NOT NULL,LCS_number INT NOT NULL, Category_ID varchar(255) NOT NULL);");
+        $wpdb->query("CREATE TABLE IF NOT EXISTS {$wpdb->prefix}lcs_category (LCS_id INT AUTO_INCREMENT PRIMARY KEY, LCS_Name varchar(255) NOT NULL,LCS_Type INT NOT NULL,LCS_cards_options varchar(255), LCS_slide_options varchar(255), Category_ID varchar(255) NOT NULL);");
     }
 
     public static function uninstall()
@@ -32,12 +32,6 @@ class Add_LCS
         $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}lcs_category;");
     }
 
-    // public function register_settings()
-    // {
-    //     register_setting('lcs_add_settings', 'lcs_name_add');
-    // 	register_setting('lcs_add_settings', 'lcs_category_add[]');
-    // }
-
     public function save_settings()
     {
         global $wpdb;
@@ -45,14 +39,20 @@ class Add_LCS
             && isset($_POST['lcs_type_add']) && !empty($_POST['lcs_type_add'])
             && isset($_POST['lcs_category_add']) && !empty($_POST['lcs_category_add'])
         ) {
-            $name_slide = $_POST['lcs_name_add'];
+            $lcs_name = $_POST['lcs_name_add'];
             $all_id = serialize($_POST['lcs_category_add']);
-            $slider_type = $_POST['lcs_type_add'];
-            $slider_numder = $_POST['lcs_number_add'];
-            $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_Name = '$name_slide'");
-            
+            $lcs_type = $_POST['lcs_type_add'];
+			if ($lcs_type == 1) {
+				$cards_options = NULL;
+				$slide_options = serialize(array('number' => $_POST['lcs_number_slide_add'], 'animation' => $_POST['lcs_anim_slide_add']));
+			} elseif ($lcs_type == 2) {
+				$slide_options = NULL;
+				$cards_options = serialize(array('number' => $_POST['lcs_number_cards_add'], ));
+			}
+            $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_Name = '$lcs_name'");
+
             if (is_null($row)) {
-                $wpdb->insert("{$wpdb->prefix}lcs_category", array('LCS_Name' => $name_slide, 'LCS_Type' => $slider_type, 'LCS_number' => $slider_numder, 'Category_ID' => $all_id));
+                $wpdb->insert("{$wpdb->prefix}lcs_category", array('LCS_Name' => $lcs_name, 'LCS_Type' => $lcs_type, 'LCS_cards_options' => $cards_options,'LCS_slide_options' => $slide_options, 'Category_ID' => $all_id));
             }
         }
     }
