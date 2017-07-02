@@ -12,59 +12,34 @@ class Shortcode_LCS
 
         $default = $wpdb->get_results("SELECT LCS_id FROM {$wpdb->prefix}lcs_category ORDER BY LCS_id LIMIT 1");
 
-        var_dump($default);
-        
         $atts = shortcode_atts(array('num' => $default), $atts);
         $id_shortcode = $atts["num"];
         $results = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_id = '$id_shortcode'");
-        
-        if ($results) { 
+
+        if ($results) {
             foreach ($results as $key) {
                 $type = $key->LCS_Type;
                 $number = $key->LCS_number;
 
                 // for display Type Card
-                // if ($number === "2") {
-                //    $col_size = "col-md-6";
-                // } elseif ($number === "3") {
-                //    $col_size = "col-md-4"; 
-                // } elseif ($number === "4") {
-                //    $col_size = "col-md-3";
-                // }
-
-                // Could use a switch :
-                // switch $number {
-                //     case 2:
-                //         $col_size = "col-md-6";
-                //         break;
-                //     case 3:
-                //         // ...
-                // }
-
-                // Or better : 
                 $col_size = sprintf("col-md-%s", 12 / $number);
 
                 // for display Type Slider
-                // Again better use Switch or the shortcut
-                // if ($number === "2") {
-                //     $max_count = 2; 
-                // } elseif ($number === "3") {
-                //     $max_count = 3; 
-                // } elseif ($number === "4") {
-                //     $max_count = 4;
-                // }
-                // But what's the point ? Use $number if the value of $max_count must be the same.
                 $max_count = (int)$number;
 
                 if ($type === "1") { // 1 = Type Slide
-                    include_once plugin_dir_path(__FILE__).'../views/front/fo-slide-lcs.php'; 
+					ob_start();
+                    include_once plugin_dir_path(__FILE__).'../views/front/fo-slide-lcs.php';
+					return ob_get_clean();
                 } elseif ($type === "2") { // 2 = Type Card
+					ob_start();
                     include_once plugin_dir_path(__FILE__).'../views/front/fo-card-lcs.php';
-                } 
+					return ob_get_clean();
+                }
             }
-        } 
+        }
     }
-    
+
     public function substrwords($text, $maxchar, $end='...')
     {
         // Cut string function

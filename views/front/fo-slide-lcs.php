@@ -1,4 +1,5 @@
 <?php
+echo '<div class="clearfix"></div>';
 echo '<div class="row slide-container-lcs lcs_' . $id_shortcode . '">';
 	echo '<div class="slide-in-container-lcs">';
 		echo '<ul class="lcs-list">';
