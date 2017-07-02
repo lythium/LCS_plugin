@@ -1,5 +1,5 @@
 <div class="row card-container-lcs lcs_<?= $id_shortcode ?>">
-    <div class="card-in-container-lcs">
+
     <?php $categories_id = unserialize($key->Category_ID); ?>
     <?php foreach ($categories_id as $cat_id): ?>
         <div class="<?= esc_attr($col_size) ?> card_lcs">
@@ -29,5 +29,5 @@
             </div>
         </div>
     <?php endforeach; ?>
-    </div>
+
 </div>

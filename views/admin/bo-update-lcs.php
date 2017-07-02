@@ -77,9 +77,9 @@ else :
 
 								<label for="lcs_number_cards_update"> <strong> Nombre d'affichage sur une ligne </strong> </label><br>
 								<select id="lcs_number_cards_update" name="lcs_number_cards_update">
+									<option value="2" <?= selected( $numb_cards_select, 2 ) ?> >2</option>
 									<option value="3" <?= selected( $numb_cards_select, 3 ) ?> >3</option>
 									<option value="4" <?= selected( $numb_cards_select, 4 ) ?> >4</option>
-									<option value="5" <?= selected( $numb_cards_select, 5 ) ?> >5</option>
 								</select>
 							</div>
 						</div>
