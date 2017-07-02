@@ -20,8 +20,8 @@ class Shortcode_LCS
             foreach ($results as $key) {
 				$cards_options = unserialize($key->LCS_cards_options);
 				$slide_options = unserialize($key->LCS_slide_options);
-				echo $cards_options;
-				echo $slide_options;
+				var_dump($cards_options);
+				var_dump($slide_options);
                 $type = $key->LCS_Type;
 
 				// Options for display Type Slider
