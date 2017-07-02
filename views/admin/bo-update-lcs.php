@@ -20,15 +20,17 @@ else :
 		$url_update =  "admin.php?page=update_lcs&select=".$id;
 		$type_select = $results->LCS_Type;
 		$cards_options = unserialize($results->LCS_cards_options);
-			$numb_cards_select = $cards_options[0];
+			$numb_cards_select = $cards_options["number"];
 		$slide_options = unserialize($results->LCS_slide_options);
-			$numb_slide_select = $slide_options[0];
-			$anim_slide_select = $slide_options[1];
+			$numb_slide_select = $slide_options["number"];
+			$anim_slide_select = $slide_options["animation"];
 		$name = sprintf("%s", $results->LCS_Name);
 		$categories_id = unserialize($results->Category_ID);
  	?>
 
 			<form action="<?= admin_url($url_update) ?>" id="update-meta" method="post" class="display-section" enctype="multipart/form-data">
+				<?php var_dump($cards_options); ?>
+				<?php var_dump($slide_options); ?>
 				<div id="left">
 					<div id="section-1" class="section">
 						<div class="section-container">
@@ -40,7 +42,7 @@ else :
 					<div id="section-2" class="section">
 						<div class="section-container">
 							<label for="groupe-type"> <strong> Choix du Type </strong> </label><br>
-							<div id="groupe-type" class="menu-settings-input radio-input">
+							<div id="groupe-type-update" class="menu-settings-input radio-input">
 								<input type="radio" id="lcs_type_update" name="lcs_type_update" value="1" <?= checked($type_select, 1, false) ?> ><label for="lcs_type_update"> Slide </label><br>
 								<input type="radio" id="lcs_type_update" name="lcs_type_update" value="2" <?= checked($type_select, 2, false) ?> ><label for="lcs_type_update"> Card </label><br>
 							</div>
@@ -52,19 +54,8 @@ else :
 					<div id="section-3" class="section">
 						<div class="section-container">
 						<label for="" id="label-option"> <strong> Options </strong></label><br>
-							<!-- Options for Card -->
-							<div id="cards-op" class="option-cards">
-
-								<label for="lcs_number_cards_add"> <strong> Nombre d'affichage sur une ligne </strong> </label><br>
-								<select id="lcs_number_cards_add" name="lcs_number_add">
-									<option value="3" <?= selected( $numb_cards_select, 3 ) ?> >3</option>
-									<option value="4" <?= selected( $numb_cards_select, 4 ) ?> >4</option>
-									<option value="5" <?= selected( $numb_cards_select, 5 ) ?> >5</option>
-								</select>
-							</div>
-
 							<!-- Options for Slide -->
-							<div id="slide-op" class="option-slide">
+							<div id="slide-op" class="option-slide" <?php if ($type_select == 1){ echo 'style="display:block;"'; }; ?> >
 								<label for="lcs_number_slide_add"> <strong> Nombre d'affichage sur un slide </strong> </label><br>
 								<select id="lcs_number_slide_add" name="lcs_number_slide_add">
 									<option value="2" <?= selected( $numb_slide_select, 2 ) ?> >2</option>
@@ -76,6 +67,17 @@ else :
 									<option value="fade" <?= selected( $anim_slide_select, "fade" ) ?> >fade</option>
 									<option value="slideLeft" <?= selected( $anim_slide_select, "slideLeft" ) ?> >slideLeft</option>
 									<option value="slideDown" <?= selected( $anim_slide_select, "slideDown" ) ?> >slideDown</option>
+								</select>
+							</div>
+
+							<!-- Options for Card -->
+							<div id="cards-op" class="option-cards" <?php if ($type_select == 2){ echo 'style="display:block;"'; }; ?> >
+
+								<label for="lcs_number_cards_add"> <strong> Nombre d'affichage sur une ligne </strong> </label><br>
+								<select id="lcs_number_cards_add" name="lcs_number_add">
+									<option value="3" <?= selected( $numb_cards_select, 3 ) ?> >3</option>
+									<option value="4" <?= selected( $numb_cards_select, 4 ) ?> >4</option>
+									<option value="5" <?= selected( $numb_cards_select, 5 ) ?> >5</option>
 								</select>
 							</div>
 						</div>

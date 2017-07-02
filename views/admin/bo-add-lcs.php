@@ -13,7 +13,7 @@
 	        <div id="section-2" class="section">
 	            <div class="section-container">
 	                <label for="groupe-type"> <strong> Choix du Type </strong> </label><br>
-	                <div id="groupe-type" class="menu-settings-input radio-input">
+	                <div id="groupe-type-add" class="menu-settings-input radio-input">
 	                    <input type="radio" id="lcs_type_add" name="lcs_type_add" value="1"><label for="lcs_type_add"> Slide </label><br>
 	                    <input type="radio" id="lcs_type_add" name="lcs_type_add" value="2"><label for="lcs_type_add"> Card </label><br>
 	                </div>
@@ -25,17 +25,6 @@
 	        <div id="section-3" class="section">
 				<div class="section-container">
 				<label for="" id="label-option"> <strong> Options </strong></label><br>
-					<!-- Options for Card -->
-					<div id="cards-op" class="option-cards">
-
-						<label for="lcs_number_cards_add"> <strong> Nombre d'affichage sur une ligne </strong> </label><br>
-						<select id="lcs_number_cards_add" name="lcs_number_add">
-							<option value="3" selected>3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select>
-					</div>
-
 					<!-- Options for Slide -->
 					<div id="slide-op" class="option-slide">
 						<label for="lcs_number_slide_add"> <strong> Nombre d'affichage sur un slide </strong> </label><br>
@@ -49,6 +38,16 @@
 							<option value="fade" selected>fade</option>
 							<option value="slideLeft">slideLeft</option>
 							<option value="slideDown">slideDown</option>
+						</select>
+					</div>
+					<!-- Options for Card -->
+					<div id="cards-op" class="option-cards">
+
+						<label for="lcs_number_cards_add"> <strong> Nombre d'affichage sur une ligne </strong> </label><br>
+						<select id="lcs_number_cards_add" name="lcs_number_add">
+							<option value="3" selected>3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
 						</select>
 					</div>
 				</div>
