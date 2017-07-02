@@ -7,11 +7,10 @@ if (empty($_GET["select"])):
 else :
 	$id_select = $_GET["select"]; ?>
 	<?php var_dump($_POST); ?>
-
 	<div class="wrap lcs-display">
 		<h1 class="wp-heading-inline"><?= get_admin_page_title() ?></h1>
 		<a class="page-title-action hide-if-no-customize" href="<?= admin_url('admin.php?page=add_lcs') ?>" class="page-title-action">Ajouter</a>
-		<hr class="wp-header-end"><?= $alerts ?></hr>
+		<hr class="wp-header-end"></hr>
 
 	<?php
 	$results = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_id = '$id_select'");
