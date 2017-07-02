@@ -6,7 +6,7 @@ if (empty($_GET["select"])):
 	header('Location: /wp-admin/admin.php?page=lcs');
 else :
 	$id_select = $_GET["select"]; ?>
-
+	<?php var_dump($_POST); ?>
 
 	<div class="wrap lcs-display">
 		<h1 class="wp-heading-inline"><?= get_admin_page_title() ?></h1>
@@ -29,7 +29,7 @@ else :
 				<div id="left">
 					<div id="section-1" class="section">
 						<div class="section-container">
-							<input type="hidden" name="select_id" value="'.$id.'">
+							<input type="hidden" name="select_id" value="<?= $id ?>">
 							<label for="lcs_name_update"> <strong> Nom du Slider </strong> </label> <input type="text" id="lcs_name_update" name="lcs_name_update" value="<?= $name ?>"><br>
 						</div>
 					</div>
