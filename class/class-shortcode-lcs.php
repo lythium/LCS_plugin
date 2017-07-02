@@ -18,14 +18,19 @@ class Shortcode_LCS
 
         if ($results) {
             foreach ($results as $key) {
+				$cards_options = unserialize($key->LCS_cards_options);
+				$slide_options = unserialize($key->LCS_slide_options);
+				echo $cards_options;
+				echo $slide_options;
                 $type = $key->LCS_Type;
 
 				// Options for display Type Slider
-				$max_count = (int)$key->LCS_slide_options["number"];
-				$anim = $key->LCS_slide_options["animation"]
+				$max_count = (int)$slide_options["number"];
+				$anim = $slide_options["animation"];
 
                 // Options  for display Type Card
-                $col_size = sprintf("col-md-%s", 12 / $key->LCS_cards_options["number"]);
+				$number_col = (int)$cards_options["number"];
+                $col_size = sprintf("col-md-%s", 12 / $number_col);
 
 
                 if ($type === "1") { // 1 = Type Slide

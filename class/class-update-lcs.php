@@ -56,5 +56,5 @@ class Update_LCS
 				);
 			}
         }
-    };
+    }
 }

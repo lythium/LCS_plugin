@@ -54,24 +54,15 @@ class Add_LCS
 
             $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_Name = '$lcs_name'");
             if (is_null($row)) {
-				$wpdb->update(
-					$wpdb->prefix."lcs_category",
+				$wpdb->insert(
+					"{$wpdb->prefix}lcs_category",
 					array(
 						'LCS_Name' => $lcs_name,
 						'LCS_Type' => $lcs_type,
 						'LCS_cards_options' => $cards_options,
 						'LCS_slide_options' => $slide_options,
 						'Category_ID' => $all_id
-					),
-					array('LCS_id' => $id_update),
-					array(
-						"%s",
-						"%d",
-						"%s",
-						"%s",
-						"%s"
-					),
-					array( "%d")
+					)
 				);
             }
         }

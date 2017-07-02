@@ -1,6 +1,7 @@
 
 <div class="clearfix"></div>
 <div class="row slide-container-lcs lcs_<?= $id_shortcode ?>">
+	<input type="hidden" id="variable-anim" value="<?= $anim ?>">
 	<div class="slide-in-container-lcs">
 		<ul class="lcs-list">
 			<?php
