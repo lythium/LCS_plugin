@@ -12,8 +12,8 @@ $(document).ready(function() {
 
   function cycleItems() {
     var item = $('.SlidePart').eq(currentIndex);
-      items.hide(0);
-      item.fadeIn(1250);
+      items.removeClass('slideInLeft').addClass('slideOutRight').fadeOut(500);
+      item.removeClass('slideOutRight').addClass('slideInLeft').delay(500).fadeIn(1250);
     }
 
     var autoSlide = setInterval(function() {
@@ -22,6 +22,6 @@ $(document).ready(function() {
       currentIndex = 0;
     }
     cycleItems();
-  }, 4500);
+}, 7000);
 
 });

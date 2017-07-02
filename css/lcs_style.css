@@ -97,7 +97,7 @@
   list-style: none;
   text-align: center;
   display: flex;
-  display: flex;
+  overflow-x: hidden;
   align-content: space-between;
   width: 100%;
   flex-direction: column;
