@@ -47,4 +47,7 @@ $(document).ready(function() {
 		}
 		cycleItems( );
 	}, 7000);
+
+
+
 });

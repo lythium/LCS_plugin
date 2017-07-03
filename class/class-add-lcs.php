@@ -37,10 +37,9 @@ class Add_LCS
         global $wpdb;
         if (isset($_POST['lcs_name_add']) && !empty($_POST['lcs_name_add'])
             && isset($_POST['lcs_type_add']) && !empty($_POST['lcs_type_add'])
-            && isset($_POST['lcs_category_add']) && !empty($_POST['lcs_category_add'])
-        ) {
+            && isset($_POST['lcs_category_slide_add']) || isset($_POST['lcs_category_cards_add']) && !empty($_POST['lcs_category_slide_add']) || !empty($_POST['lcs_category_cards_add']))
+		{
             $lcs_name = $_POST['lcs_name_add'];
-            $all_id = serialize($_POST['lcs_category_add']);
             $lcs_type = $_POST['lcs_type_add'];
 			// Serialize Options
 			$slide_options = serialize(array(
@@ -51,6 +50,13 @@ class Add_LCS
 				'number' => $_POST['lcs_number_cards_add'],
 				'name_display' => $_POST['lcs_display_name_card_add']
 			));
+			// Serialize Options Category
+			if ($lcs_type === 1) {
+				$all_id = serialize($_POST['lcs_category_slide_add']);
+			} elseif ($lcs_type === 2) {
+				$all_id = serialize($_POST['lcs_category_cards_add']);
+
+			}
 
             $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_Name = '$lcs_name'");
             if (is_null($row)) {

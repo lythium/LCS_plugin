@@ -70,7 +70,6 @@
 		<div id="right">
 	        <div id="section-4" class="section">
 				<div class="section-container">
-					<input type="checkbox" id="toggle">
 					<label for="toggle" id="label-toggle"> <strong> Choix des Categories </strong></label><br>
 
 					<?php
@@ -78,22 +77,42 @@
 						'orderby' => 'id',
 						'order'   => 'ASC'
 					) );
-					$xyz = 0;
 					?>
-					<div id="droplist" class="input-checkbox">
-						<ul class="list-group">
+					<!-- Option Category slide -->
+					<div id="cat_option_slide" class="input-checkbox" style="display:block;">
+						<ul  class="list-group">
 						<?php
 						foreach ($categories as $category):
 						?>
 							<li class="list-group-item">
 								<label class="menu-item-category">
-								<input type="checkbox" id="lcs_category_add" name="lcs_category_add[]" value="<?= $category->cat_ID ?>">
+								<input type="checkbox" id="lcs_category_slide_add" name="lcs_category_slide_add[]" value="<?= $category->cat_ID ?>">
 								<?php echo 'Catégorie :'. $category->name; ?>
 								</label>
 							</li>
 						<?php endforeach; ?>
+
 						</ul>
 					</div>
+					<!-- Option Category card -->
+					<div id="cat_option_cards" class="input-checkbox" style="display:none;">
+						<ul id="list-chk" class="list-group">
+						<?php
+						$i = 0;
+						foreach ($categories as $category):
+						?>
+							<li class="list-group-item">
+								<label class="menu-item-category">
+								<input type="checkbox" id="lcs_category_card_add <?= "check".$i ?>" name="lcs_category_cards_add[]" value="<?= $category->cat_ID ?>">
+								<?php echo 'Catégorie :'. $category->name; ?>
+								</label>
+							</li>
+						<?php $i++; ?>
+						<?php endforeach; ?>
+
+						</ul>
+					</div>
+
 				</div>
 			</div>
         </div>

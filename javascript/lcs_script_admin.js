@@ -12,12 +12,25 @@ $(document).ready(function() {
 	function DisplayOptions (type) {
 		if (type == 1) {
 			$('.option-cards').hide(500);
+			$('#cat_option_cards').hide(500);
 			$('.option-slide').show(500);
+			$('#cat_option_slide').show(500);
 		} else if (type == 2) {
 			$('.option-slide').hide(500);
+			$('#cat_option_slide').hide(500);
 			$('.option-cards').show(500);
+			$('#cat_option_cards').show(500);
 		};
 	};
 
-
+	// Category script
+	jQuery(function(){
+	    var max = 4;
+	    var checkboxes = $('#list-chk li input[type="checkbox"]');
+		var verifType = $('[name="lcs_type_update"]:checked').val();
+	    checkboxes.change(function(){
+	        var current = checkboxes.filter(':checked').length;
+	        checkboxes.filter(':not(:checked)').prop('disabled', current >= max);
+	    });
+	});
 });
