@@ -23,11 +23,10 @@ class Update_LCS
 
         if (isset($_POST['lcs_name_update']) && !empty($_POST['lcs_name_update'])
             && isset($_POST['lcs_type_update']) && !empty($_POST['lcs_type_update'])
-            && isset($_POST['lcs_category_update']) && !empty($_POST['lcs_category_update'])
-        ) {
+            && isset($_POST['lcs_category_slide_update']) || isset($_POST['lcs_category_cards_update']) && !empty($_POST['lcs_category_slide_update']) || !empty($_POST['lcs_category_cards_update']))
+		{
             $id_update = $_POST['select_id'];
             $lcs_name = $_POST['lcs_name_update'];
-            $all_id = serialize($_POST['lcs_category_update']);
             $lcs_type = $_POST['lcs_type_update'];
 			// Serialize Options
 			$slide_options = serialize(array(
@@ -38,6 +37,11 @@ class Update_LCS
 				'number' => $_POST["lcs_number_cards_update"],
 				'name_display' => $_POST['lcs_display_name_card_update']
 			));
+			if ($lcs_type == 1) {
+				$all_id = serialize($_POST['lcs_category_slide_update']);
+			} elseif ($lcs_type == 2) {
+				$all_id = serialize($_POST['lcs_category_cards_update']);
+			};
             $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_id = '$id_update'");
 
             if (!is_null($row)) {

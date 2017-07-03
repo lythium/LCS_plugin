@@ -102,18 +102,25 @@ else :
 				<div id="right">
 					<div id="section-4" class="section">
 						<div class="section-container">
-							<input type="checkbox" id="toggle">
 							<label for="toggle" id="label-toggle"> <strong> Choix des Categories </strong></label><br>
 
 							<?php
+							if ($type_select == 1) {
+								$displaySlide = 'display:block;';
+								$displayCards = 'display:none;';
+							} elseif ($type_select == 2) {
+								$displaySlide = 'display:none;';
+								$displayCards = 'display:block;';
+							}
 							$categories = get_categories( array(
 								'orderby' => 'id',
 								'order'   => 'ASC'
 							) );
 							$xyz = 0;
 							?>
-							<div id="droplist" class="input-checkbox">
-								<ul class="list-group">
+							<!-- Option Category slide -->
+							<div id="cat_option_slide" class="input-checkbox" style="<?= $displaySlide ?>">
+								<ul  class="list-group">
 								<?php
 								foreach ($categories as $category):
 									if (in_array($category->cat_ID, $categories_id)):
@@ -124,11 +131,35 @@ else :
 								?>
 									<li class="list-group-item">
 										<label class="menu-item-category">
-										<input type="checkbox" id="lcs_category_update" name="lcs_category_update[]" value="<?= $category->cat_ID ?>" <?= $checked ?> >
-										<?php echo $category->name; ?>
+										<input type="checkbox" id="lcs_category_slide_update" name="lcs_category_slide_update[]" value="<?= $category->cat_ID ?>" <?= $checked ?> >
+										<?php echo 'Catégorie :'. $category->name; ?>
 										</label>
 									</li>
 								<?php endforeach; ?>
+
+								</ul>
+							</div>
+							<!-- Option Category card -->
+							<div id="cat_option_cards" class="input-checkbox" style="<?= $displayCards ?>">
+								<ul id="list-chk" class="list-group">
+								<?php
+								$i = 0;
+								foreach ($categories as $category):
+									if (in_array($category->cat_ID, $categories_id)):
+										$checked = "checked";
+									else :
+										$checked = "";
+									endif;
+								?>
+									<li class="list-group-item">
+										<label class="menu-item-category">
+										<input type="checkbox" id="lcs_category_card_update <?= "check".$i ?>" name="lcs_category_cards_update[]" value="<?= $category->cat_ID ?>" <?= $checked ?> >
+										<?php echo 'Catégorie :'. $category->name; ?>
+										</label>
+									</li>
+								<?php $i++; ?>
+								<?php endforeach; ?>
+
 								</ul>
 							</div>
 						</div>
