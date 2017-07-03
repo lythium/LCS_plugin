@@ -30,7 +30,8 @@ class Shortcode_LCS
 
                 // Options  for display Type Card
 				$number_col = (int)$cards_options["number"];
-                $col_size = sprintf("col-md-%s", 12 / $number_col);
+                $col_size = 100 / $number_col . "%";
+				$display_name = $cards_options["name_display"];
 
 
                 if ($type === "1") { // 1 = Type Slide
