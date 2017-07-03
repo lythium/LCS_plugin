@@ -36,7 +36,7 @@ class Update_LCS
 			));
 			$cards_options = serialize(array(
 				'number' => $_POST["lcs_number_cards_update"],
-				'name' => 'test'
+				'name_display' => $_POST['lcs_display_name_card_update']
 			));
             $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_id = '$id_update'");
 

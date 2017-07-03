@@ -49,7 +49,7 @@ class Add_LCS
 			));
 			$cards_options = serialize(array(
 				'number' => $_POST['lcs_number_cards_add'],
-				'name' => 'test'
+				'name_display' => $_POST['lcs_display_name_card_add']
 			));
 
             $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}lcs_category WHERE LCS_Name = '$lcs_name'");

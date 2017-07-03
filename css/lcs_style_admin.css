@@ -66,3 +66,6 @@
 .list-group-item {
 	align-self: center;
 }
+#groupe-type-add, #groupe-type-update {
+	float: none!important;
+}
