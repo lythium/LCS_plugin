@@ -26,7 +26,6 @@ else :
 		endif;
 		if (!is_null($results->LCS_cards_options)):
 			$cards_options_select = unserialize($results->LCS_cards_options);
-			$numb_cards_select = $cards_options_select["number"];
 			$display_name_card_select = $cards_options_select["name_display"];
 		endif;
 		$name = sprintf("%s", $results->LCS_Name);
@@ -85,12 +84,6 @@ else :
 									<label for="lcs_display_name_card_update"> None </label><br>
 								</div>
 
-								<label for="lcs_number_cards_update"> <strong> Nombre d'affichage sur une ligne </strong> </label><br>
-								<select id="lcs_number_cards_update" name="lcs_number_cards_update">
-									<option value="2" <?= selected( $numb_cards_select, 2 ) ?> >2</option>
-									<option value="3" <?= selected( $numb_cards_select, 3 ) ?> >3</option>
-									<option value="4" <?= selected( $numb_cards_select, 4 ) ?> >4</option>
-								</select>
 							</div>
 						</div>
 			        </div>
@@ -123,7 +116,7 @@ else :
 								<ul  class="list-group">
 								<?php
 								foreach ($categories as $category):
-									if (in_array($category->cat_ID, $categories_id)):
+									if (in_array($category->cat_ID, $categories_id) && ($type_select == 1)):
 										$checked = "checked";
 									else :
 										$checked = "";
@@ -145,7 +138,7 @@ else :
 								<?php
 								$i = 0;
 								foreach ($categories as $category):
-									if (in_array($category->cat_ID, $categories_id)):
+									if (in_array($category->cat_ID, $categories_id) && ($type_select == 2)):
 										$checked = "checked";
 									else :
 										$checked = "";

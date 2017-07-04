@@ -52,12 +52,6 @@
 							<input type="radio" id="lcs_display_name_card_add" name="lcs_display_name_card_add" value="none"><br>
 						</div>
 
-						<label for="lcs_number_cards_add"> <strong> Nombre d'affichage sur une ligne </strong> </label><br>
-						<select id="lcs_number_cards_add" name="lcs_number_cards_add">
-							<option value="2" selected>2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
 					</div>
 				</div>
 

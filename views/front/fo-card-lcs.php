@@ -1,6 +1,4 @@
 <div class="row card-container-lcs lcs_<?= $id_shortcode ?>">
-
-    <?php $categories_id = unserialize($key->Category_ID); ?>
     <?php foreach ($categories_id as $cat_id): ?>
         <div class="card_lcs" style="width:<?= $col_size ?>">
             <div class="inter-card-lcs">
