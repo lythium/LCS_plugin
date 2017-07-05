@@ -27,10 +27,14 @@ $(document).ready(function() {
 	jQuery(function(){
 	    var max = 4;
 	    var checkboxes = $('#list-chk li input[type="checkbox"]');
-		var verifType = $('[name="lcs_type_update"]:checked').val();
+			var verifType = $('[name="lcs_type_update"]:checked').val();
 	    checkboxes.change(function(){
 	        var current = checkboxes.filter(':checked').length;
 	        checkboxes.filter(':not(:checked)').prop('disabled', current >= max);
+					if (current > max) {
+						console.log(this);
+						$(this).prop('checked', false).prop('disabled', true);
+					}
 	    });
 	});
 });
