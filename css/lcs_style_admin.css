@@ -18,6 +18,8 @@
 	background: transparent;
 }
 .section-container {
+  display: flex;
+  flex-direction: column;
   padding: 10px;
   background-color: #DDDDDD;
   border-radius: 5px;
