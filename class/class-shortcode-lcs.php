@@ -22,14 +22,15 @@ class Shortcode_LCS
 				$slide_options = unserialize($key->LCS_slide_options);
 				var_dump($cards_options);
 				var_dump($slide_options);
-                $type = $key->LCS_Type;
+        $type = $key->LCS_Type;
+        $categories_id = unserialize($key->Category_ID);
 
 				// Options for display Type Slider
 				$max_count = (int)$slide_options["number"];
 				$anim = $slide_options["animation"];
 
-                // Options  for display Type Card
-				$number_col = (int)$cards_options["number"];
+        // Options  for display Type Card
+				$number_col = (int)count($categories_id);
                 $col_size = 100 / $number_col . "%";
 				$display_name = $cards_options["name_display"];
 
