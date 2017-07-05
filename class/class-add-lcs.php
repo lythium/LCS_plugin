@@ -47,7 +47,6 @@ class Add_LCS
 				'animation' => $_POST['lcs_anim_slide_add']
 			));
 			$cards_options = serialize(array(
-				'number' => $_POST['lcs_number_cards_add'],
 				'name_display' => $_POST['lcs_display_name_card_add']
 			));
 			// Serialize Options Category
