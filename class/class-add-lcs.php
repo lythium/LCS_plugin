@@ -56,12 +56,8 @@ class Add_LCS
 				'order' => $orderSlide
 			));
 			$cards_options = serialize(array(
-<<<<<<< HEAD
 				'name_display' => $_POST['lcs_display_name_card_add'],
 				'order' => $orderCards
-=======
-				'name_display' => $_POST['lcs_display_name_card_add']
->>>>>>> 47d1f295afce56f079c7f915e68856cd07dad419
 			));
 			// Serialize Options Category
 			if ($lcs_type === 1) {

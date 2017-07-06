@@ -22,13 +22,8 @@ class Shortcode_LCS
 				$slide_options = unserialize($key->LCS_slide_options);
 				var_dump($cards_options);
 				var_dump($slide_options);
-<<<<<<< HEAD
 				$type = $key->LCS_Type;
 				$categories_id = unserialize($key->Category_ID);
-=======
-        $type = $key->LCS_Type;
-        $categories_id = unserialize($key->Category_ID);
->>>>>>> 47d1f295afce56f079c7f915e68856cd07dad419
 
 				// Options for display Type Slider
 				$display_name_slide = (string)$slide_options["name"];
@@ -36,18 +31,11 @@ class Shortcode_LCS
 				$anim = (string)$slide_options["animation"];
 				$order_slide = $slide_options["order"];
 
-<<<<<<< HEAD
 				// Options  for display Type Card
 				$number_col = (int)count($categories_id);
 				$col_size = 100 / $number_col . "%";
 				$display_name_cards = $cards_options["name_display"];
 				$order_cards = $cards_options["order"];
-=======
-        // Options  for display Type Card
-				$number_col = (int)count($categories_id);
-                $col_size = 100 / $number_col . "%";
-				$display_name = $cards_options["name_display"];
->>>>>>> 47d1f295afce56f079c7f915e68856cd07dad419
 
 
 				if ($type === "1") { // 1 = Type Slide
