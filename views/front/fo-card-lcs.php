@@ -3,7 +3,7 @@
         <div class="card_lcs" style="width:<?= $col_size ?>">
             <div class="inter-card-lcs">
                 <div class="in-card_lcs">
-					<?php if ($display_name === "none"):?>
+					<?php if ($display_name_cards === "none"):?>
 						<div class="category_name_lcs inline text-center" style="display:none;">
 					<?php else: ?>
 						<div class="category_name_lcs inline text-center">

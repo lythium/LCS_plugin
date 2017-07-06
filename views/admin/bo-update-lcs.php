@@ -21,6 +21,7 @@ else :
 		$type_select = $results->LCS_Type;
 		if (!is_null($results->LCS_slide_options)):
 		$slide_options_select = unserialize($results->LCS_slide_options);
+			$name_slide_select = $slide_options_select['name'];
 			$numb_slide_select = $slide_options_select["number"];
 			$anim_slide_select = $slide_options_select["animation"];
 		endif;
@@ -60,6 +61,15 @@ else :
 						<label for="" id="label-option"> <strong> Options </strong></label><br>
 							<!-- Options for Slide -->
 							<div id="slide-op" class="option-slide" <?php if ($type_select == 1){ echo 'style="display:block;"'; }; ?> >
+								<label for="groupe-name-update" id="groupe-name-update"> <strong> Display name </strong></label><br>
+								<div id="groupe-name-update" class="menu-settings-input radio-input">
+									<label for="lcs_name_update" > Show </label>
+									<input type="radio" id="lcs_name_update" name="lcs_name_update" value="show" <?= checked($name_slide_select, "show", false) ?>><br>
+									<label for="lcs_name_update"> Hide </label>
+									<input type="radio" id="lcs_name_update" name="lcs_name_update" value="hide" <?= checked($name_slide_select, "hide", false) ?>><br>
+								</div>
+								<br>
+								<br>
 								<label for="lcs_number_slide_update"> <strong> Nombre d'affichage sur un slide </strong> </label><br>
 								<select id="lcs_number_slide_update" name="lcs_number_slide_update">
 									<option value="2" <?= selected( $numb_slide_select, 2 ) ?> >2</option>
@@ -131,6 +141,14 @@ else :
 								<?php endforeach; ?>
 
 								</ul>
+								<br>
+								<label for="lcs_order_slide_update"> Order </label>
+								<div class="">
+									<input type="radio" name="lcs_order_slide_update" value="asc" <?= checked( $order_slide, "asc", false )?> >
+									<label for="lcs_order_slide_update"> Ascendent </label>
+									<input type="radio" name="lcs_order_slide_update" value="desc" <?= checked( $order_slide, "desc", false )?> >
+									<label for="lcs_order_slide_update"> descendent </label>
+								</div><br>
 							</div>
 							<!-- Option Category card -->
 							<div id="cat_option_cards" class="input-checkbox" style="<?= $displayCards ?>">
@@ -155,6 +173,14 @@ else :
 
 								</ul>
 								<span>Max 4 Catégory in Cards Mode</span>
+								<br>
+								<label for="lcs_order_cards_update"> Order </label>
+								<div class="">
+									<input type="radio" name="lcs_order_cards_update" value="asc" <?= checked( $order_cards, "asc", false )?>>
+									<label for="lcs_order_cards_update"> Ascendent </label>
+									<input type="radio" name="lcs_order_cards_update" value="desc" <?= checked( $order_cards, "desc", false )?>>
+									<label for="lcs_order_cards_update"> descendent </label>
+								</div><br>
 							</div>
 						</div>
 					</div>

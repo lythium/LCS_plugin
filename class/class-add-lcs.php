@@ -41,13 +41,23 @@ class Add_LCS
 		{
             $lcs_name = $_POST['lcs_name_add'];
             $lcs_type = $_POST['lcs_type_add'];
+			if ($lcs_type == 1) {
+				$orderSlide = $_POST['lcs_order_slide_add'];
+				$orderCards = "0";
+			} elseif ($lcs_type == 2) {
+				$orderSlide = "0";
+				$orderCards = $_POST['lcs_order_cards_add'];
+			};
 			// Serialize Options
 			$slide_options = serialize(array(
+				'name' => $_POST['lcs_name_add'],
 				'number' => $_POST['lcs_number_slide_add'],
-				'animation' => $_POST['lcs_anim_slide_add']
+				'animation' => $_POST['lcs_anim_slide_add'],
+				'order' => $orderSlide
 			));
 			$cards_options = serialize(array(
-				'name_display' => $_POST['lcs_display_name_card_add']
+				'name_display' => $_POST['lcs_display_name_card_add'],
+				'order' => $orderCards
 			));
 			// Serialize Options Category
 			if ($lcs_type === 1) {

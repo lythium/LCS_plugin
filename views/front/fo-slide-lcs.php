@@ -6,6 +6,7 @@
 		<ul class="lcs-list">
 			<?php
 			$categories_id = unserialize($key->Category_ID);
+			var_dump($categories_id);
 			$count = 0;
 			foreach ( $categories_id as $cat_id ):
 				$cat_name = get_cat_name( $cat_id );
@@ -20,11 +21,13 @@
 					<?php endif; ?>
 					<div class="slide-card-container">
 						<!-- Insert Name Category -->
-						<span class="tooltips">
-							<a class="" href="<?= get_category_link($cat_id) ?>">
-								<?= substrwords(get_cat_name($cat_id), 15) ?>
-							</a>
-						</span>
+						<?php if ($display_name_slide == "show"):?>
+							<span class="tooltips">
+								<a class="" href="<?= get_category_link($cat_id) ?>">
+									<?= substrwords(get_cat_name($cat_id), 15) ?>
+								</a>
+							</span>
+						<?php endif; ?>
 						<a class="slide-card-lcs-link" href="<?= get_category_link($cat_id) ?>">
 							<?php if ( has_post_thumbnail( $id_last ) ): ?>
 								<?= get_the_post_thumbnail( $id_last, 'thumbnail', array( 'class' => 'col-md-12' ) ); ?>

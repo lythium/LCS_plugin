@@ -28,13 +28,23 @@ class Update_LCS
             $id_update = $_POST['select_id'];
             $lcs_name = $_POST['lcs_name_update'];
             $lcs_type = $_POST['lcs_type_update'];
+			if ($lcs_type == 1) {
+				$orderSlide = $_POST['lcs_order_slide_update'];
+				$orderCards = "0";
+			} elseif ($lcs_type == 2) {
+				$orderSlide = "0";
+				$orderCards = $_POST['lcs_order_cards_update'];
+			};
 			// Serialize Options
 			$slide_options = serialize(array(
+				'name' => $_POST['lcs_name_update'],
 				'number' => $_POST['lcs_number_slide_update'],
-				'animation' => $_POST['lcs_anim_slide_update']
+				'animation' => $_POST['lcs_anim_slide_update'],
+				'order' => $orderSlide
 			));
 			$cards_options = serialize(array(
-				'name_display' => $_POST['lcs_display_name_card_update']
+				'name_display' => $_POST['lcs_display_name_card_update'],
+				'order' => $orderCards
 			));
 			if ($lcs_type == 1) {
 				$all_id = serialize($_POST['lcs_category_slide_update']);
