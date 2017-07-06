@@ -43,8 +43,12 @@ class Update_LCS
 				'order' => $orderSlide
 			));
 			$cards_options = serialize(array(
+<<<<<<< HEAD
 				'name_display' => $_POST['lcs_display_name_card_update'],
 				'order' => $orderCards
+=======
+				'name_display' => $_POST['lcs_display_name_card_update']
+>>>>>>> 47d1f295afce56f079c7f915e68856cd07dad419
 			));
 			if ($lcs_type == 1) {
 				$all_id = serialize($_POST['lcs_category_slide_update']);
